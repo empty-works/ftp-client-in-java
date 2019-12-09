@@ -13,6 +13,12 @@ public class FTPFrame extends javax.swing.JFrame {
      */
     public FTPFrame() {
         initComponents();
+        addStatusPanel();
+    }
+    
+    private void addStatusPanel() {
+        
+        TopPanel.add(new StatusPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +37,7 @@ public class FTPFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(3, 1));
 
         TopPanel.setToolTipText(null);
-        TopPanel.setLayout(new java.awt.GridBagLayout());
+        TopPanel.setLayout(new java.awt.GridLayout());
         getContentPane().add(TopPanel);
 
         MiddlePanel.setToolTipText(null);
