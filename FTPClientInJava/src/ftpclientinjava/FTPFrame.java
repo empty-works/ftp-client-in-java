@@ -19,18 +19,46 @@ public class FTPFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        TopPanel = new javax.swing.JPanel();
+        MiddlePanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        BottomPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(3, 1));
+
+        TopPanel.setToolTipText(null);
+        TopPanel.setLayout(new java.awt.GridBagLayout());
+        getContentPane().add(TopPanel);
+
+        MiddlePanel.setToolTipText(null);
+        MiddlePanel.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel2.setToolTipText(null);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+        MiddlePanel.add(jPanel2);
+
+        jPanel1.setToolTipText(null);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+        MiddlePanel.add(jPanel1);
+
+        getContentPane().add(MiddlePanel);
+
+        BottomPanel.setToolTipText(null);
+        BottomPanel.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel4.setToolTipText(null);
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+        BottomPanel.add(jPanel4);
+
+        jPanel3.setToolTipText(null);
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+        BottomPanel.add(jPanel3);
+
+        getContentPane().add(BottomPanel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -71,5 +99,12 @@ public class FTPFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BottomPanel;
+    private javax.swing.JPanel MiddlePanel;
+    private javax.swing.JPanel TopPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
