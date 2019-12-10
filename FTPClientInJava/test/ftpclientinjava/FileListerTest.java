@@ -3,12 +3,14 @@
 package ftpclientinjava;
 
 import java.util.Collection;
+import org.apache.commons.net.ftp.FTPClient;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.mockftpserver.fake.FakeFtpServer;
 
 /**
  *
@@ -16,12 +18,21 @@ import static org.junit.Assert.*;
  */
 public class FileListerTest {
     
+    private FTPClient ftpclient;
+    private FakeFtpServer fakeFtpServer;
+    
+    private static final String USER = "TheAwesome12345";
+    private static final String PASSWORD = "12345";
+    private static final String HOME_DIR = "/";
+    private static final String FILE = "/dir/test001.txt";
+    private static final String CONTENTS = "This is just a test. Please work.";
+    
     public FileListerTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
-        
+         
     }
     
     @AfterClass
