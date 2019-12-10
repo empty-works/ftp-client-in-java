@@ -25,8 +25,9 @@ public class FileListerTest {
     
     private static final String USER = "TheAwesome12345";
     private static final String PASSWORD = "12345";
-    private static final String HOME_DIR = "/";
-    private static final String FILE = "/dir/test001.txt";
+    private static final String HOME_DIR = "c:\\stuff";
+    private static final String FILE1 = "c:\\stuff\\test001.txt";
+    private static final String FILE2 = "c:\\stuff\\test002.txt";
     private static final String CONTENTS = "This is just a test. Please work.";
     
     public FileListerTest() {
@@ -50,6 +51,7 @@ public class FileListerTest {
         
         FileSystem fileSystem = new WindowsFakeFileSystem();
         int port = fakeFtpServer.getServerControlPort();
+        
         //Connection con = new Connection(USER, PASSWORD, );
     }
     
