@@ -2,7 +2,12 @@
  */
 package ftpclientinjava;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 
 /**
  *
@@ -15,5 +20,13 @@ public class FileLister {
     public FileLister(FTPClient ftpClient) {
         
         this.ftpClient = ftpClient;
+    }
+    
+    public Collection<String> getListFiles(String path) throws IOException {
+        
+        FTPFile[] files = ftpClient.listFiles(path);
+        return Arrays.stream(files)
+                .map(FTPFile::getName)
+                .collect(Collectors.toList());
     }
 }
