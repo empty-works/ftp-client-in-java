@@ -2,6 +2,7 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.beans.FtpServerLogin;
 import java.util.Collection;
 import org.apache.commons.net.ftp.FTPClient;
 import org.junit.After;
@@ -25,14 +26,6 @@ public class FileListerTest {
     private FTPClient ftpclient;
     private FakeFtpServer fakeFtpServer;
     
-    private static final String USER = "TheAwesome12345";
-    private static final String PASSWORD = "12345";
-    private static final String HOME_DIR = "c:\\stuff";
-    private static final String FILE1 = "c:\\stuff\\test001.txt";
-    private static final String FILE2 = "c:\\stuff\\test002.txt";
-    private static final String CONTENTS1 = "This is just a test. Please work.";
-    private static final String CONTENTS2 = "This is a second test.";
-    
     public FileListerTest() {
     }
     
@@ -53,10 +46,12 @@ public class FileListerTest {
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
         
         FileSystem fileSystem = new WindowsFakeFileSystem();
-        fileSystem.add(new DirectoryEntry(HOME_DIR));
-        fileSystem.add(new FileEntry(FILE1, CONTENTS1));
-        fileSystem.add(new FileEntry(FILE2, CONTENTS2));
+        fileSystem.add(new DirectoryEntry(FtpServerLogin.HOME_DIR));
+        fileSystem.add(new FileEntry(FtpServerLogin.FILE1, FtpServerLogin.CONTENTS1));
+        fileSystem.add(new FileEntry(FtpServerLogin.FILE2, FtpServerLogin.CONTENTS2));
         fakeFtpServer.setFileSystem(fileSystem);
+        
+        
         
         int port = fakeFtpServer.getServerControlPort();
         
