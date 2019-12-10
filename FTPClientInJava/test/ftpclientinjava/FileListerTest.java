@@ -11,6 +11,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockftpserver.fake.FakeFtpServer;
+import org.mockftpserver.fake.filesystem.DirectoryEntry;
+import org.mockftpserver.fake.filesystem.FileEntry;
 import org.mockftpserver.fake.filesystem.FileSystem;
 import org.mockftpserver.fake.filesystem.WindowsFakeFileSystem;
 
@@ -28,7 +30,8 @@ public class FileListerTest {
     private static final String HOME_DIR = "c:\\stuff";
     private static final String FILE1 = "c:\\stuff\\test001.txt";
     private static final String FILE2 = "c:\\stuff\\test002.txt";
-    private static final String CONTENTS = "This is just a test. Please work.";
+    private static final String CONTENTS1 = "This is just a test. Please work.";
+    private static final String CONTENTS2 = "This is a second test.";
     
     public FileListerTest() {
     }
@@ -50,6 +53,11 @@ public class FileListerTest {
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
         
         FileSystem fileSystem = new WindowsFakeFileSystem();
+        fileSystem.add(new DirectoryEntry(HOME_DIR));
+        fileSystem.add(new FileEntry(FILE1, CONTENTS1));
+        fileSystem.add(new FileEntry(FILE2, CONTENTS2));
+        fakeFtpServer.setFileSystem(fileSystem);
+        
         int port = fakeFtpServer.getServerControlPort();
         
         //Connection con = new Connection(USER, PASSWORD, );
