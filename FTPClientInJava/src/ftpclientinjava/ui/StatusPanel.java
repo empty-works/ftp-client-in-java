@@ -1,6 +1,6 @@
 /*
  */
-package ftpclientinjava;
+package ftpclientinjava.ui;
 
 /**
  *
@@ -22,7 +22,7 @@ public class StatusPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

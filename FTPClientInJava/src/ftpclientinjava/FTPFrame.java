@@ -2,6 +2,8 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.ui.StatusPanel;
+
 /**
  *
  * @author MP
