@@ -11,6 +11,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockftpserver.fake.FakeFtpServer;
+import org.mockftpserver.fake.filesystem.FileSystem;
+import org.mockftpserver.fake.filesystem.WindowsFakeFileSystem;
 
 /**
  *
@@ -32,7 +34,8 @@ public class FileListerTest {
     
     @BeforeClass
     public static void setUpClass() {
-         
+        
+        
     }
     
     @AfterClass
@@ -41,6 +44,13 @@ public class FileListerTest {
     
     @Before
     public void setUp() {
+        
+        fakeFtpServer = new FakeFtpServer();
+        fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
+        
+        FileSystem fileSystem = new WindowsFakeFileSystem();
+        int port = fakeFtpServer.getServerControlPort();
+        //Connection con = new Connection(USER, PASSWORD, );
     }
     
     @After

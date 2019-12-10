@@ -22,6 +22,12 @@ public class FileLister {
         this.ftpClient = ftpClient;
     }
     
+    /***************************************************************************
+     * 
+     * @param path
+     * @return
+     * @throws IOException 
+     */
     public Collection<String> getListFiles(String path) throws IOException {
         
         FTPFile[] files = ftpClient.listFiles(path);

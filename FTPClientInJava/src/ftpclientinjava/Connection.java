@@ -19,6 +19,13 @@ public class Connection {
     
     private FTPClient ftpClient = new FTPClient();
     
+    /***************************************************************************
+     * 
+     * @param username
+     * @param password
+     * @param server
+     * @param port 
+     */
     public Connection(String username, String password, String server, int port) {
         
         this.username = username;
