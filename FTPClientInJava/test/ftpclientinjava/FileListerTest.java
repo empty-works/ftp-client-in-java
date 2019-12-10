@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockftpserver.fake.FakeFtpServer;
+import org.mockftpserver.fake.UserAccount;
 import org.mockftpserver.fake.filesystem.DirectoryEntry;
 import org.mockftpserver.fake.filesystem.FileEntry;
 import org.mockftpserver.fake.filesystem.FileSystem;
@@ -51,7 +52,9 @@ public class FileListerTest {
         fileSystem.add(new FileEntry(FtpServerLogin.FILE2, FtpServerLogin.CONTENTS2));
         fakeFtpServer.setFileSystem(fileSystem);
         
-        
+        UserAccount userAccount = new UserAccount(
+                FtpServerLogin.USER, FtpServerLogin.PASSWORD, FtpServerLogin.HOME_DIR);
+        fakeFtpServer.addUserAccount(userAccount);
         
         int port = fakeFtpServer.getServerControlPort();
         
