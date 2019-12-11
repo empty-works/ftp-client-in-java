@@ -3,6 +3,7 @@
 package ftpclientinjava;
 
 import ftpclientinjava.beans.FtpServerLogin;
+import java.util.ArrayList;
 import java.util.Collection;
 import org.apache.commons.net.ftp.FTPClient;
 import org.junit.After;
@@ -51,14 +52,17 @@ public class FileListerTest {
         fileSystem.add(new FileEntry(FtpServerLogin.FILE1, FtpServerLogin.CONTENTS1));
         fileSystem.add(new FileEntry(FtpServerLogin.FILE2, FtpServerLogin.CONTENTS2));
         fakeFtpServer.setFileSystem(fileSystem);
-        
+
         UserAccount userAccount = new UserAccount(
                 FtpServerLogin.USER, FtpServerLogin.PASSWORD, FtpServerLogin.HOME_DIR);
         fakeFtpServer.addUserAccount(userAccount);
         
+        fakeFtpServer.start();
         int port = fakeFtpServer.getServerControlPort();
         
-        //Connection con = new Connection(USER, PASSWORD, );
+        Connection con = new Connection(
+                FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
+        
     }
     
     @After
@@ -73,7 +77,9 @@ public class FileListerTest {
         System.out.println("getListFiles");
         String path = "";
         FileLister instance = null;
-        Collection<String> expResult = null;
+        Collection<String> expResult = new ArrayList();
+        expResult.add(FtpServerLogin.FILE1);
+        expResult.add(FtpServerLogin.FILE2);
         Collection<String> result = instance.getListFiles(path);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
