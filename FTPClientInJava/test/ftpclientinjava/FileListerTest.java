@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.log4j.BasicConfigurator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,6 +45,8 @@ public class FileListerTest {
     
     @Before
     public void setUp() throws IOException {
+
+        
         
         fakeFtpServer = new FakeFtpServer();
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
