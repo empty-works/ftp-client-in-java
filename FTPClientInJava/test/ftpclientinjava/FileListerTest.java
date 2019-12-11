@@ -81,8 +81,8 @@ public class FileListerTest {
         String path = FtpServerLogin.HOME_DIR;
         FileLister instance = new FileLister(ftpclient);
         Collection<String> expResult = new ArrayList();
-        expResult.add(FtpServerLogin.FILE1);
-        expResult.add(FtpServerLogin.FILE2);
+        expResult.add(FtpServerLogin.FILENAME1);
+        expResult.add(FtpServerLogin.FILENAME2);
         Collection<String> result = instance.getListFiles(path);
         ftpclient.disconnect();
         fakeFtpServer.stop();
