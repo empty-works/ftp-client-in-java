@@ -46,7 +46,7 @@ public class FileListerTest {
     @Before
     public void setUp() throws IOException {
 
-        
+        BasicConfigurator.configure();
         
         fakeFtpServer = new FakeFtpServer();
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
