@@ -15,8 +15,11 @@ public class FTPFrame extends javax.swing.JFrame {
      */
     public FTPFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
         addStatusPanel();
     }
+    
+    
     
     private void addStatusPanel() {
         
@@ -36,10 +39,12 @@ public class FTPFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 650));
+        setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridLayout(3, 1));
 
         TopPanel.setToolTipText(null);
-        TopPanel.setLayout(new java.awt.GridLayout());
+        TopPanel.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(TopPanel);
 
         MiddlePanel.setToolTipText(null);
