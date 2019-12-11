@@ -69,8 +69,7 @@ public class FileListerTest {
     @After
     public void tearDown() throws IOException {
         
-        ftpclient.disconnect();
-        fakeFtpServer.stop();
+        
     }
 
     /**
@@ -85,9 +84,10 @@ public class FileListerTest {
         expResult.add(FtpServerLogin.FILE1);
         expResult.add(FtpServerLogin.FILE2);
         Collection<String> result = instance.getListFiles(path);
+        ftpclient.disconnect();
+        fakeFtpServer.stop();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
