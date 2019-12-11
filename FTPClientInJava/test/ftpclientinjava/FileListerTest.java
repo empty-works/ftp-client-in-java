@@ -3,6 +3,7 @@
 package ftpclientinjava;
 
 import ftpclientinjava.beans.FtpServerLogin;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.apache.commons.net.ftp.FTPClient;
@@ -42,7 +43,7 @@ public class FileListerTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         
         fakeFtpServer = new FakeFtpServer();
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
@@ -62,11 +63,14 @@ public class FileListerTest {
         
         Connection con = new Connection(
                 FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
-        
+        ftpclient = con.getFTPClient();
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws IOException {
+        
+        ftpclient.disconnect();
+        fakeFtpServer.stop();
     }
 
     /**
@@ -75,8 +79,8 @@ public class FileListerTest {
     @Test
     public void testGetListFiles() throws Exception {
         System.out.println("getListFiles");
-        String path = "";
-        FileLister instance = null;
+        String path = FtpServerLogin.HOME_DIR;
+        FileLister instance = new FileLister(ftpclient);
         Collection<String> expResult = new ArrayList();
         expResult.add(FtpServerLogin.FILE1);
         expResult.add(FtpServerLogin.FILE2);
