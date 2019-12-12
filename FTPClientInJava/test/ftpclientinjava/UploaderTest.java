@@ -7,6 +7,7 @@ import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.File;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -61,6 +62,6 @@ public class UploaderTest {
         String path = FtpServerLogin.HOME_DIR + "uploaderTest.txt";
         Uploader instance = new Uploader(ftpclient);
         instance.upload(file, path);
-        
+        assertThat(fakeFtpServer.getFileSystem().exists(path), is(true));
     }
 }
