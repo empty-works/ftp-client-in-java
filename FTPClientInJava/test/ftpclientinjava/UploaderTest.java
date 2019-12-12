@@ -57,7 +57,7 @@ public class UploaderTest {
     @Test
     public void testUpload() throws Exception {
         System.out.println("upload");
-        File file = null;
+        File file = new File(getClass().getClassLoader().getResource("uploadTest.txt").toURI());
         String path = "";
         Uploader instance = null;
         instance.upload(file, path);
