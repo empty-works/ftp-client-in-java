@@ -58,8 +58,9 @@ public class UploaderTest {
     public void testUpload() throws Exception {
         System.out.println("upload");
         File file = new File(getClass().getClassLoader().getResource("uploadTest.txt").toURI());
-        String path = "";
-        Uploader instance = null;
+        String path = FtpServerLogin.HOME_DIR + "uploaderTest.txt";
+        Uploader instance = new Uploader(ftpclient);
         instance.upload(file, path);
+        
     }
 }
