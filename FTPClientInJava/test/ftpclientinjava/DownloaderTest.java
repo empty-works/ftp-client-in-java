@@ -2,6 +2,8 @@
  */
 package ftpclientinjava;
 
+import java.io.File;
+import static org.hamcrest.io.FileMatchers.anExistingFile;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,8 +46,7 @@ public class DownloaderTest {
         String destination = "";
         Downloader instance = null;
         instance.downloadFile(source, destination);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertThat(new File(destination), anExistingFile());
     }
     
 }
