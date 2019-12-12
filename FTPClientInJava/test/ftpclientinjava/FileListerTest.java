@@ -3,6 +3,7 @@
 package ftpclientinjava;
 
 import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,21 +47,7 @@ public class FileListerTest {
     @Before
     public void setUp() throws IOException {
 
-        BasicConfigurator.configure();
-        
-        fakeFtpServer = new FakeFtpServer();
-        fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
-        
-        FileSystem fileSystem = new WindowsFakeFileSystem();
-        fileSystem.add(new DirectoryEntry(FtpServerLogin.HOME_DIR));
-        fileSystem.add(new FileEntry(FtpServerLogin.FILE1, FtpServerLogin.CONTENTS1));
-        fileSystem.add(new FileEntry(FtpServerLogin.FILE2, FtpServerLogin.CONTENTS2));
-        fakeFtpServer.setFileSystem(fileSystem);
-
-        UserAccount userAccount = new UserAccount(
-                FtpServerLogin.USER, FtpServerLogin.PASSWORD, FtpServerLogin.HOME_DIR);
-        fakeFtpServer.addUserAccount(userAccount);
-        
+        fakeFtpServer = FakeFtpServerCreator.getFakeFtpServer();
         fakeFtpServer.start();
         int port = fakeFtpServer.getServerControlPort();
         
