@@ -2,6 +2,9 @@
  */
 package ftpclientinjava;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
@@ -17,5 +20,8 @@ public class Uploader {
         this.ftpclient = ftpclient;
     }
     
-    
+    public void upload(File file, String path) throws IOException {
+        
+        ftpclient.storeFile(path, new FileInputStream(file));
+    }
 }
