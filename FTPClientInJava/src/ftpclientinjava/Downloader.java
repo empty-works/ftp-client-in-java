@@ -19,5 +19,9 @@ public class Downloader {
         this.ftpClient = ftpClient;
     }
     
-    
+    public void downloadFile(String source, String destination) throws IOException {
+        
+        FileOutputStream out = new FileOutputStream(destination);
+        ftpClient.retrieveFile(source, out);
+    }
 }
