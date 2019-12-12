@@ -12,8 +12,8 @@ public class StatusPanel extends javax.swing.JPanel {
      * 
      */
     public StatusPanel() {
-        initComponents();
-    }
+        initComponents(); 
+   }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,6 +23,8 @@ public class StatusPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
 
         setLayout(new java.awt.GridLayout(1, 0));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
