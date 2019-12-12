@@ -58,9 +58,9 @@ public class DownloaderTest {
     @Test
     public void testDownloadFile() throws Exception {
         System.out.println("downloadFile");
-        String source = "";
-        String destination = "";
-        Downloader instance = null;
+        String source = FtpServerLogin.FILE1;
+        String destination = "downloaded_test001.txt";
+        Downloader instance = new Downloader(ftpclient);
         instance.downloadFile(source, destination);
         assertThat(new File(destination), anExistingFile());
     }
