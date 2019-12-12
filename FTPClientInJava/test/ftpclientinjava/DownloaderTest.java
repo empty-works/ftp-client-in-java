@@ -30,6 +30,8 @@ public class DownloaderTest {
     
     @Before
     public void setUp() {
+        
+        
     }
     
     @After
