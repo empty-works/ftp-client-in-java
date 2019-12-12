@@ -62,6 +62,8 @@ public class DownloaderTest {
         String destination = "downloaded_test001.txt";
         Downloader instance = new Downloader(ftpclient);
         instance.downloadFile(source, destination);
+        ftpclient.disconnect();
+        fakeFtpServer.stop();
         assertThat(new File(destination), anExistingFile());
     }
     
