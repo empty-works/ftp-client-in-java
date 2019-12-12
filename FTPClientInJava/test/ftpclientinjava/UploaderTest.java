@@ -2,19 +2,27 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.File;
+import java.io.IOException;
+import org.apache.commons.net.ftp.FTPClient;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.mockftpserver.fake.FakeFtpServer;
 
 /**
  *
  * @author MP
  */
 public class UploaderTest {
+    
+    private FTPClient ftpclient;
+    private FakeFtpServer fakeFtpServer;
     
     public UploaderTest() {
     }
@@ -28,7 +36,15 @@ public class UploaderTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+        
+        fakeFtpServer = FakeFtpServerCreator.getFakeFtpServer();
+        fakeFtpServer.start();
+        int port = fakeFtpServer.getServerControlPort();
+        
+        Connection con = new Connection(
+                FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
+        ftpclient = con.getFTPClient();
     }
     
     @After
@@ -45,8 +61,5 @@ public class UploaderTest {
         String path = "";
         Uploader instance = null;
         instance.upload(file, path);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
 }
