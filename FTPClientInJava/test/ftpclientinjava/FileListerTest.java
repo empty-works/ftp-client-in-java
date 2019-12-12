@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.log4j.BasicConfigurator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,11 +15,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockftpserver.fake.FakeFtpServer;
-import org.mockftpserver.fake.UserAccount;
-import org.mockftpserver.fake.filesystem.DirectoryEntry;
-import org.mockftpserver.fake.filesystem.FileEntry;
-import org.mockftpserver.fake.filesystem.FileSystem;
-import org.mockftpserver.fake.filesystem.WindowsFakeFileSystem;
 
 /**
  *
@@ -76,8 +70,6 @@ public class FileListerTest {
         Collection<String> result = instance.getListFiles(path);
         ftpclient.disconnect();
         fakeFtpServer.stop();
-        assertEquals(expResult, result);
-        
+        assertEquals(expResult, result);  
     }
-    
 }
