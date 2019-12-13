@@ -62,6 +62,8 @@ public class UploaderTest {
         String path = FtpServerLogin.HOME_DIR + "uploaderTest.txt";
         Uploader instance = new Uploader(ftpclient);
         instance.upload(file, path);
+        ftpclient.disconnect();
+        fakeFtpServer.stop();
         assertThat(fakeFtpServer.getFileSystem().exists(path), is(true));
     }
 }
