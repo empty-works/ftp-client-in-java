@@ -29,49 +29,63 @@ public class FTPFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         TopPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel1 = new javax.swing.JLabel();
         MiddlePanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        BottomPanel = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        UploadContainer = new javax.swing.JPanel();
+        DownloadContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(1000, 650));
-        getContentPane().setLayout(new java.awt.GridLayout(3, 1));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         TopPanel.setToolTipText(null);
-        TopPanel.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(TopPanel);
+        TopPanel.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setToolTipText(null);
+
+        jLabel1.setText("jLabel1");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jScrollPane1.setViewportView(jLabel1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        TopPanel.add(jScrollPane1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        getContentPane().add(TopPanel, gridBagConstraints);
 
         MiddlePanel.setToolTipText(null);
         MiddlePanel.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel2.setToolTipText(null);
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-        MiddlePanel.add(jPanel2);
+        UploadContainer.setToolTipText(null);
+        UploadContainer.setLayout(new java.awt.GridBagLayout());
+        MiddlePanel.add(UploadContainer);
 
-        jPanel1.setToolTipText(null);
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-        MiddlePanel.add(jPanel1);
+        DownloadContainer.setToolTipText(null);
+        DownloadContainer.setLayout(new java.awt.GridLayout());
+        MiddlePanel.add(DownloadContainer);
 
-        getContentPane().add(MiddlePanel);
-
-        BottomPanel.setToolTipText(null);
-        BottomPanel.setLayout(new java.awt.GridLayout(1, 2));
-
-        jPanel4.setToolTipText(null);
-        jPanel4.setLayout(new java.awt.GridBagLayout());
-        BottomPanel.add(jPanel4);
-
-        jPanel3.setToolTipText(null);
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-        BottomPanel.add(jPanel3);
-
-        getContentPane().add(BottomPanel);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.2;
+        getContentPane().add(MiddlePanel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,12 +128,11 @@ public class FTPFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BottomPanel;
+    private javax.swing.JPanel DownloadContainer;
     private javax.swing.JPanel MiddlePanel;
     private javax.swing.JPanel TopPanel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel UploadContainer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
