@@ -17,6 +17,7 @@ public class FTPFrame extends javax.swing.JFrame {
     public FTPFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
         addStatusPanel();
         
         addDownloaderPanel();
@@ -39,8 +40,8 @@ public class FTPFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        StatusContainer = new javax.swing.JPanel();
         LoginContainer = new javax.swing.JPanel();
+        StatusContainer = new javax.swing.JPanel();
         BottomContainer = new javax.swing.JPanel();
         UploadContainer = new javax.swing.JPanel();
         DownloadContainer = new javax.swing.JPanel();
@@ -49,17 +50,6 @@ public class FTPFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        StatusContainer.setBackground(new java.awt.Color(255, 255, 255));
-        StatusContainer.setToolTipText(null);
-        StatusContainer.setLayout(new java.awt.GridLayout(1, 0));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        getContentPane().add(StatusContainer, gridBagConstraints);
 
         LoginContainer.setToolTipText(null);
         LoginContainer.setMinimumSize(new java.awt.Dimension(10, 50));
@@ -71,6 +61,17 @@ public class FTPFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         getContentPane().add(LoginContainer, gridBagConstraints);
+
+        StatusContainer.setBackground(new java.awt.Color(255, 255, 255));
+        StatusContainer.setToolTipText(null);
+        StatusContainer.setLayout(new java.awt.GridLayout(1, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        getContentPane().add(StatusContainer, gridBagConstraints);
 
         BottomContainer.setToolTipText(null);
         BottomContainer.setLayout(new java.awt.GridLayout(1, 2));
