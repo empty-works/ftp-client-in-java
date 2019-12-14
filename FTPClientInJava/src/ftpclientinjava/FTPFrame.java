@@ -26,7 +26,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addStatusPanel() {
         
-        TopPanel.add(new StatusPanel());
+        TopContainer.add(new StatusPanel());
     }
     
     private void addDownloaderPanel() {
@@ -39,8 +39,9 @@ public class FTPFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        TopPanel = new javax.swing.JPanel();
-        MiddlePanel = new javax.swing.JPanel();
+        TopContainer = new javax.swing.JPanel();
+        LoginContainer = new javax.swing.JPanel();
+        BottomContainer = new javax.swing.JPanel();
         UploadContainer = new javax.swing.JPanel();
         DownloadContainer = new javax.swing.JPanel();
 
@@ -49,34 +50,45 @@ public class FTPFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        TopPanel.setToolTipText(null);
-        TopPanel.setLayout(new java.awt.GridLayout());
+        TopContainer.setBackground(new java.awt.Color(255, 255, 255));
+        TopContainer.setToolTipText(null);
+        TopContainer.setLayout(new java.awt.GridLayout(1, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(TopPanel, gridBagConstraints);
+        getContentPane().add(TopContainer, gridBagConstraints);
 
-        MiddlePanel.setToolTipText(null);
-        MiddlePanel.setLayout(new java.awt.GridLayout(1, 2));
-
-        UploadContainer.setToolTipText(null);
-        UploadContainer.setLayout(new java.awt.GridBagLayout());
-        MiddlePanel.add(UploadContainer);
-
-        DownloadContainer.setToolTipText(null);
-        DownloadContainer.setLayout(new java.awt.GridLayout());
-        MiddlePanel.add(DownloadContainer);
-
+        LoginContainer.setToolTipText(null);
+        LoginContainer.setMinimumSize(new java.awt.Dimension(10, 50));
+        LoginContainer.setPreferredSize(new java.awt.Dimension(100, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        getContentPane().add(LoginContainer, gridBagConstraints);
+
+        BottomContainer.setToolTipText(null);
+        BottomContainer.setLayout(new java.awt.GridLayout(1, 2));
+
+        UploadContainer.setToolTipText(null);
+        UploadContainer.setLayout(new java.awt.GridBagLayout());
+        BottomContainer.add(UploadContainer);
+
+        DownloadContainer.setToolTipText(null);
+        DownloadContainer.setLayout(new java.awt.GridLayout(1, 0));
+        BottomContainer.add(DownloadContainer);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.2;
-        getContentPane().add(MiddlePanel, gridBagConstraints);
+        getContentPane().add(BottomContainer, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,9 +131,10 @@ public class FTPFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BottomContainer;
     private javax.swing.JPanel DownloadContainer;
-    private javax.swing.JPanel MiddlePanel;
-    private javax.swing.JPanel TopPanel;
+    private javax.swing.JPanel LoginContainer;
+    private javax.swing.JPanel TopContainer;
     private javax.swing.JPanel UploadContainer;
     // End of variables declaration//GEN-END:variables
 }
