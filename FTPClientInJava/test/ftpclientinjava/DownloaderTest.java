@@ -2,7 +2,7 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.beans.TestFtpServerLogin;
 import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class DownloaderTest {
         int port = fakeFtpServer.getServerControlPort();
         
         Connection con = new Connection(
-                FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
+                TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, "localhost", port);
         ftpclient = con.getFTPClient();
     }
     
@@ -58,7 +58,7 @@ public class DownloaderTest {
     @Test
     public void testDownloadFile() throws Exception {
         System.out.println("downloadFile");
-        String source = FtpServerLogin.FILE1;
+        String source = TestFtpServerLogin.FILE1;
         String destination = "downloaded_test001.txt";
         Downloader instance = new Downloader(ftpclient);
         instance.downloadFile(source, destination);

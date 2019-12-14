@@ -2,7 +2,7 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.beans.TestFtpServerLogin;
 import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class FileListerTest {
         int port = fakeFtpServer.getServerControlPort();
         
         Connection con = new Connection(
-                FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
+                TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, "localhost", port);
         ftpclient = con.getFTPClient();
     }
     
@@ -62,11 +62,11 @@ public class FileListerTest {
     @Test
     public void testGetListFiles() throws Exception {
         System.out.println("getListFiles");
-        String path = FtpServerLogin.HOME_DIR;
+        String path = TestFtpServerLogin.HOME_DIR;
         FileLister instance = new FileLister(ftpclient);
         Collection<String> expResult = new ArrayList();
-        expResult.add(FtpServerLogin.FILENAME1);
-        expResult.add(FtpServerLogin.FILENAME2);
+        expResult.add(TestFtpServerLogin.FILENAME1);
+        expResult.add(TestFtpServerLogin.FILENAME2);
         Collection<String> result = instance.getListFiles(path);
         ftpclient.disconnect();
         fakeFtpServer.stop();

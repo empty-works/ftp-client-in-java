@@ -6,7 +6,7 @@ package ftpclientinjava.beans;
  *
  * @author MP
  */
-public class FtpServerLogin {
+public class TestFtpServerLogin {
     
     public static final String USER = "TheAwesome12345";
     public static final String PASSWORD = "12345";

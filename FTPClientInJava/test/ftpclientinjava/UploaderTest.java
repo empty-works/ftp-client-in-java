@@ -2,7 +2,7 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.beans.TestFtpServerLogin;
 import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class UploaderTest {
         int port = fakeFtpServer.getServerControlPort();
         
         Connection con = new Connection(
-                FtpServerLogin.USER, FtpServerLogin.PASSWORD, "localhost", port);
+                TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, "localhost", port);
         ftpclient = con.getFTPClient();
     }
     
@@ -59,7 +59,7 @@ public class UploaderTest {
     public void testUpload() throws Exception {
         System.out.println("upload");
         File file = new File(getClass().getClassLoader().getResource("uploadTest.txt").toURI());
-        String path = FtpServerLogin.HOME_DIR + "uploaderTest.txt";
+        String path = TestFtpServerLogin.HOME_DIR + "uploaderTest.txt";
         Uploader instance = new Uploader(ftpclient);
         instance.upload(file, path);
         ftpclient.disconnect();

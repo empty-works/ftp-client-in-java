@@ -2,7 +2,7 @@
  */
 package ftpclientinjava.unit_test;
 
-import ftpclientinjava.beans.FtpServerLogin;
+import ftpclientinjava.beans.TestFtpServerLogin;
 import org.apache.log4j.BasicConfigurator;
 import org.mockftpserver.fake.FakeFtpServer;
 import org.mockftpserver.fake.UserAccount;
@@ -25,13 +25,13 @@ public class FakeFtpServerCreator {
         fakeFtpServer.setServerControlPort(0); // 0 to use a free port number.
         
         FileSystem fileSystem = new WindowsFakeFileSystem();
-        fileSystem.add(new DirectoryEntry(FtpServerLogin.HOME_DIR));
-        fileSystem.add(new FileEntry(FtpServerLogin.FILE1, FtpServerLogin.CONTENTS1));
-        fileSystem.add(new FileEntry(FtpServerLogin.FILE2, FtpServerLogin.CONTENTS2));
+        fileSystem.add(new DirectoryEntry(TestFtpServerLogin.HOME_DIR));
+        fileSystem.add(new FileEntry(TestFtpServerLogin.FILE1, TestFtpServerLogin.CONTENTS1));
+        fileSystem.add(new FileEntry(TestFtpServerLogin.FILE2, TestFtpServerLogin.CONTENTS2));
         fakeFtpServer.setFileSystem(fileSystem);
 
         UserAccount userAccount = new UserAccount(
-                FtpServerLogin.USER, FtpServerLogin.PASSWORD, FtpServerLogin.HOME_DIR);
+                TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, TestFtpServerLogin.HOME_DIR);
         fakeFtpServer.addUserAccount(userAccount);
         
         return fakeFtpServer;

@@ -2,6 +2,7 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.StatusPanel;
 
 /**
@@ -17,6 +18,8 @@ public class FTPFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         addStatusPanel();
+        
+        addDownloaderPanel();
     }
     
     
@@ -25,6 +28,11 @@ public class FTPFrame extends javax.swing.JFrame {
         
         TopPanel.add(new StatusPanel());
     }
+    
+    private void addDownloaderPanel() {
+        
+        DownloadContainer.add(new DownloaderUi());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,8 +40,6 @@ public class FTPFrame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         TopPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
         MiddlePanel = new javax.swing.JPanel();
         UploadContainer = new javax.swing.JPanel();
         DownloadContainer = new javax.swing.JPanel();
@@ -44,22 +50,7 @@ public class FTPFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         TopPanel.setToolTipText(null);
-        TopPanel.setLayout(new java.awt.GridBagLayout());
-
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setToolTipText(null);
-
-        jLabel1.setText("jLabel1");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jScrollPane1.setViewportView(jLabel1);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        TopPanel.add(jScrollPane1, gridBagConstraints);
-
+        TopPanel.setLayout(new java.awt.GridLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -132,7 +123,5 @@ public class FTPFrame extends javax.swing.JFrame {
     private javax.swing.JPanel MiddlePanel;
     private javax.swing.JPanel TopPanel;
     private javax.swing.JPanel UploadContainer;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
