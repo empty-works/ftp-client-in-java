@@ -2,17 +2,23 @@
  */
 package ftpclientinjava.ui;
 
+import ftpclientinjava.beans.UserLoginInput;
+
 /**
  *
  * @author MP
  */
 public class LoginUi extends javax.swing.JPanel {
 
+    private UserLoginInput userLogin;
+    
     /**
      * 
      */
-    public LoginUi() {
+    public LoginUi(UserLoginInput userLogin) {
         initComponents();
+        
+        this.userLogin = userLogin;
     }
 
     @SuppressWarnings("unchecked")

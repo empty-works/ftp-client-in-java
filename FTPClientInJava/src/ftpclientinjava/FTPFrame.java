@@ -2,6 +2,7 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
@@ -12,6 +13,8 @@ import ftpclientinjava.ui.StatusPanel;
  */
 public class FTPFrame extends javax.swing.JFrame {
 
+    private UserLoginInput userLogin = new UserLoginInput();
+    
     /**
      * 
      */
@@ -26,7 +29,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addLoginPanel() {
         
-        LoginContainer.add(new LoginUi());
+        LoginContainer.add(new LoginUi(userLogin));
     }
     
     private void addStatusPanel() {
