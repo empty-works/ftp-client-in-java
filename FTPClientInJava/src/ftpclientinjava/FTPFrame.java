@@ -3,6 +3,7 @@
 package ftpclientinjava;
 
 import ftpclientinjava.ui.DownloaderUi;
+import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
 
 /**
@@ -17,13 +18,16 @@ public class FTPFrame extends javax.swing.JFrame {
     public FTPFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        addLoginPanel();
         addStatusPanel();
         
         addDownloaderPanel();
     }
     
-    
+    private void addLoginPanel() {
+        
+        LoginContainer.add(new LoginUi());
+    }
     
     private void addStatusPanel() {
         
