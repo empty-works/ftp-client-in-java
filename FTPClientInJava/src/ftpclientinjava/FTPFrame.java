@@ -26,7 +26,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addStatusPanel() {
         
-        TopContainer.add(new StatusPanel());
+        StatusContainer.add(new StatusPanel());
     }
     
     private void addDownloaderPanel() {
@@ -39,7 +39,7 @@ public class FTPFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        TopContainer = new javax.swing.JPanel();
+        StatusContainer = new javax.swing.JPanel();
         LoginContainer = new javax.swing.JPanel();
         BottomContainer = new javax.swing.JPanel();
         UploadContainer = new javax.swing.JPanel();
@@ -50,23 +50,24 @@ public class FTPFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        TopContainer.setBackground(new java.awt.Color(255, 255, 255));
-        TopContainer.setToolTipText(null);
-        TopContainer.setLayout(new java.awt.GridLayout(1, 0));
+        StatusContainer.setBackground(new java.awt.Color(255, 255, 255));
+        StatusContainer.setToolTipText(null);
+        StatusContainer.setLayout(new java.awt.GridLayout(1, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(TopContainer, gridBagConstraints);
+        getContentPane().add(StatusContainer, gridBagConstraints);
 
         LoginContainer.setToolTipText(null);
         LoginContainer.setMinimumSize(new java.awt.Dimension(10, 50));
         LoginContainer.setPreferredSize(new java.awt.Dimension(100, 50));
+        LoginContainer.setLayout(new java.awt.GridLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         getContentPane().add(LoginContainer, gridBagConstraints);
@@ -134,7 +135,7 @@ public class FTPFrame extends javax.swing.JFrame {
     private javax.swing.JPanel BottomContainer;
     private javax.swing.JPanel DownloadContainer;
     private javax.swing.JPanel LoginContainer;
-    private javax.swing.JPanel TopContainer;
+    private javax.swing.JPanel StatusContainer;
     private javax.swing.JPanel UploadContainer;
     // End of variables declaration//GEN-END:variables
 }
