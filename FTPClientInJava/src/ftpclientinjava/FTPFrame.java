@@ -23,7 +23,6 @@ public class FTPFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         addLoginPanel();
         addStatusPanel();
-        
         addDownloaderPanel();
     }
     
@@ -61,7 +60,7 @@ public class FTPFrame extends javax.swing.JFrame {
         LoginContainer.setToolTipText(null);
         LoginContainer.setMinimumSize(new java.awt.Dimension(10, 50));
         LoginContainer.setPreferredSize(new java.awt.Dimension(100, 50));
-        LoginContainer.setLayout(new java.awt.GridLayout());
+        LoginContainer.setLayout(new java.awt.GridLayout(1, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
