@@ -4,6 +4,9 @@ package ftpclientinjava.ui;
 
 import ftpclientinjava.LoginHandler;
 import ftpclientinjava.beans.UserLoginInput;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,7 +46,7 @@ public class LoginUi extends javax.swing.JPanel {
         userLogin.port = Integer.getInteger(port);
     }
     
-    private void sendToLoginHandler() {
+    private void sendToLoginHandler() throws IOException {
         
         loginHandler = new LoginHandler(userLogin);
         loginHandler.login();
@@ -218,7 +221,11 @@ public class LoginUi extends javax.swing.JPanel {
         setUsername(UsernameTextField.getText());
         setPassword(PasswordField.getPassword().toString());
         setPort(PortTextField.getText());
-        sendToLoginHandler();
+        try {
+            sendToLoginHandler();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginUi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_connectButtonActionPerformed
 
 
