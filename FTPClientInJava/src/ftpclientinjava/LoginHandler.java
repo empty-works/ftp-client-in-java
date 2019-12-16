@@ -10,7 +10,7 @@ import ftpclientinjava.beans.UserLoginInput;
  */
 public class LoginHandler {
     
-    private UserLoginInput userLogin;
+    private UserLoginInput userLogin = null;
     private String server;
     private String username;
     private String password;
@@ -19,6 +19,14 @@ public class LoginHandler {
     public LoginHandler(UserLoginInput userLogin) {
         
         this.userLogin = userLogin;
+    }
+    
+    public void login() {
+        
+        this.server = userLogin.server;
+        this.username = userLogin.username;
+        this.password = userLogin.password;
+        this.port = userLogin.port;
     }
 
     /**
@@ -30,27 +38,11 @@ public class LoginHandler {
     }
 
     /**
-     * @param server the server to set
-     */
-    public void setServer(String server) {
-        
-        this.server = server;
-    }
-
-    /**
      * @return the username
      */
     public String getUsername() {
         
         return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        
-        this.username = username;
     }
 
     /**
@@ -62,28 +54,10 @@ public class LoginHandler {
     }
 
     /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        
-        this.password = password;
-    }
-
-    /**
      * @return the port
      */
     public int getPort() {
         
         return port;
     }
-
-    /**
-     * @param port the port to set
-     */
-    public void setPort(int port) {
-        
-        this.port = port;
-    }
-    
-    
 }

@@ -12,7 +12,7 @@ import ftpclientinjava.beans.UserLoginInput;
 public class LoginUi extends javax.swing.JPanel {
 
     private UserLoginInput userLogin;
-    private LoginHandler login;
+    private LoginHandler loginHandler;
     
     /**
      * 
@@ -21,28 +21,32 @@ public class LoginUi extends javax.swing.JPanel {
         initComponents();
         
         this.userLogin = userLogin;
-        login = new LoginHandler(userLogin);
-        
     }
     
     private void setServer(String server) {
         
-        
+        userLogin.server = server;
     }
     
     private void setUsername(String username) {
         
-        
+        userLogin.username = username;
     }
     
     private void setPassword(String password) {
         
-        
+        userLogin.password = password;
     }
     
     private void setPort(String port) {
         
+        userLogin.port = Integer.getInteger(port);
+    }
+    
+    private void sendToLoginHandler() {
         
+        loginHandler = new LoginHandler(userLogin);
+        loginHandler.login();
     }
 
     @SuppressWarnings("unchecked")
@@ -214,6 +218,7 @@ public class LoginUi extends javax.swing.JPanel {
         setUsername(UsernameTextField.getText());
         setPassword(PasswordField.getPassword().toString());
         setPort(PortTextField.getText());
+        sendToLoginHandler();
     }//GEN-LAST:event_connectButtonActionPerformed
 
 
