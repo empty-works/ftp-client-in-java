@@ -3,6 +3,8 @@
 package ftpclientinjava;
 
 import ftpclientinjava.beans.UserLoginInput;
+import java.io.IOException;
+import org.apache.commons.net.ftp.FTPClient;
 
 /**
  *
@@ -15,49 +17,32 @@ public class LoginHandler {
     private String username;
     private String password;
     private int port;
+    private Connection connection;
+    private FTPClient ftpClient;
     
     public LoginHandler(UserLoginInput userLogin) {
         
         this.userLogin = userLogin;
     }
     
-    public void login() {
+    public void login() throws IOException {
         
         this.server = userLogin.server;
         this.username = userLogin.username;
         this.password = userLogin.password;
         this.port = userLogin.port;
-    }
-
-    /**
-     * @return the server
-     */
-    public String getServer() {
         
-        return server;
+        establishConnection();
+        createFtpClient();
     }
-
-    /**
-     * @return the username
-     */
-    public String getUsername() {
+    
+    private void establishConnection() {
         
-        return username;
+        connection = new Connection(username, password, server, port);
     }
-
-    /**
-     * @return the password
-     */
-    public String getPassword() {
+    
+    private void createFtpClient() throws IOException {
         
-        return password;
-    }
-
-    /**
-     * @return the port
-     */
-    public int getPort() {
-        
-        return port;
+        ftpClient = connection.getFTPClient();
     }
 }
