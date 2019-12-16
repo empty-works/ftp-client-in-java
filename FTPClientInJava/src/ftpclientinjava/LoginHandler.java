@@ -8,7 +8,7 @@ import ftpclientinjava.beans.UserLoginInput;
  *
  * @author MP
  */
-public class Login {
+public class LoginHandler {
     
     private UserLoginInput userLogin;
     private String server;
@@ -16,7 +16,7 @@ public class Login {
     private String password;
     private int port;
     
-    public Login(UserLoginInput userLogin) {
+    public LoginHandler(UserLoginInput userLogin) {
         
         this.userLogin = userLogin;
     }
