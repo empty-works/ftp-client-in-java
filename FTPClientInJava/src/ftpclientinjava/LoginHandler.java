@@ -12,7 +12,7 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class LoginHandler {
     
-    private UserLoginInput userLogin = null;
+    private UserLoginInput userLogin = null; 
     private String server;
     private String username;
     private String password;

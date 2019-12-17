@@ -72,6 +72,7 @@ public class LoginUi extends javax.swing.JPanel {
         LogCon5 = new javax.swing.JPanel();
         connectButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 204, 204));
         setToolTipText(null);
         setLayout(new java.awt.GridLayout(1, 5));
 
@@ -207,9 +208,10 @@ public class LoginUi extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 30);
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
         LogCon5.add(connectButton, gridBagConstraints);
 
         add(LogCon5);
