@@ -184,6 +184,7 @@ public class LoginUi extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         LogCon4.add(PortLabel, gridBagConstraints);
 
+        PortTextField.setText("0");
         PortTextField.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

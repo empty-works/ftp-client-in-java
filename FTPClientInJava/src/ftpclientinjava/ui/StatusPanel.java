@@ -20,8 +20,8 @@ public class StatusPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -29,11 +29,10 @@ public class StatusPanel extends javax.swing.JPanel {
         jPanel1.setToolTipText(null);
         jPanel1.setLayout(new java.awt.GridLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextPane1.setEditable(false);
+        jScrollPane2.setViewportView(jTextPane1);
 
-        jPanel1.add(jScrollPane1);
+        jPanel1.add(jScrollPane2);
 
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
@@ -41,7 +40,7 @@ public class StatusPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
