@@ -25,6 +25,25 @@ public class PortIntFilter extends DocumentFilter {
         sb.append(doc.getText(0, doc.getLength()));
         sb.insert(offset, string);
         
+        if(test(sb.toString())) {
+            
+            super.insertString(fb, offset, string, attr);
+        } else {
+            
+            
+        }
+    }
+    
+    private boolean test(String text) {
         
+        try {
+            
+            Integer.parseInt(text);
+            return true;
+            
+        } catch(NumberFormatException e) {
+            
+            return false;
+        }
     }
 }
