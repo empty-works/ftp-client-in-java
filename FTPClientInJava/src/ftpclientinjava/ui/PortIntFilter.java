@@ -1,4 +1,7 @@
 /*
+ * The following code was mostly copied from a StackOverflow post by the user 
+ * Hovercraft Full of Eels: 
+ * https://stackoverflow.com/questions/11093326/restricting-jtextfield-input-to-integers
  */
 package ftpclientinjava.ui;
 
