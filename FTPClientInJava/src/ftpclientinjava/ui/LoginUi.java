@@ -26,10 +26,10 @@ public class LoginUi extends javax.swing.JPanel {
         initComponents();
         
         this.userLogin = userLogin;
-        setIntFilterOnPort();
+        setPortFilters();
     }
     
-    private void setIntFilterOnPort() {
+    private void setPortFilters() {
         
         PlainDocument doc = (PlainDocument) PortTextField.getDocument();
         doc.setDocumentFilter(new PortIntFilter());
