@@ -35,7 +35,7 @@ public class LoginUi extends javax.swing.JPanel {
         
         PlainDocument doc = (PlainDocument) PortTextField.getDocument();
         doc.setDocumentFilter(new CompositeFiltersFilter(
-                new PortIntFilter(), new NumLimitFilter()));
+                new PortIntFilter()/*, new NumLimitFilter()*/));
     }
     
     private void setServer(String server) {
@@ -55,7 +55,10 @@ public class LoginUi extends javax.swing.JPanel {
     
     private void setPort(String port) {
         
-        userLogin.port = Integer.parseInt(port);
+        if(!port.equals("")) {
+            
+            userLogin.port = Integer.parseInt(port);
+        }        
     }
     
     private void sendToLoginHandler() throws IOException {
@@ -63,6 +66,8 @@ public class LoginUi extends javax.swing.JPanel {
         loginHandler = new LoginHandler(userLogin);
         loginHandler.login();
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -243,6 +248,7 @@ public class LoginUi extends javax.swing.JPanel {
             sendToLoginHandler();
         } catch (IOException ex) {
             Logger.getLogger(LoginUi.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_connectButtonActionPerformed
 
