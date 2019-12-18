@@ -47,7 +47,21 @@ public class PortIntFilter extends DocumentFilter {
         }
     }
     
-    
+    @Override
+    public void replace(FilterBypass fb, int offset, int length, String text,
+         AttributeSet attrs) throws BadLocationException {
+
+      Document doc = fb.getDocument();
+      StringBuilder sb = new StringBuilder();
+      sb.append(doc.getText(0, doc.getLength()));
+      sb.replace(offset, offset + length, text);
+
+      if (test(sb.toString())) {
+         super.replace(fb, offset, length, text, attrs);
+      } else {
+         // warn the user and don't allow the insert
+      }
+    }
     
     
 }
