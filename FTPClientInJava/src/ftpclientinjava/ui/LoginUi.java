@@ -10,6 +10,7 @@ import ftpclientinjava.ui.document_filters.NumLimitFilter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.text.PlainDocument;
 
 /**
@@ -248,7 +249,8 @@ public class LoginUi extends javax.swing.JPanel {
             sendToLoginHandler();
         } catch (IOException ex) {
             Logger.getLogger(LoginUi.class.getName()).log(Level.SEVERE, null, ex);
-            
+            JOptionPane.showMessageDialog(
+                    LoginUi.this, ex, "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_connectButtonActionPerformed
 
