@@ -6,6 +6,7 @@ import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
+import ftpclientinjava.ui.UploaderUi;
 
 /**
  *
@@ -23,6 +24,7 @@ public class FTPFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         addLoginPanel();
         addStatusPanel();
+        addUploaderPanel();
         addDownloaderPanel();
     }
     
@@ -34,6 +36,11 @@ public class FTPFrame extends javax.swing.JFrame {
     private void addStatusPanel() {
         
         StatusContainer.add(new StatusPanel());
+    }
+    
+    private void addUploaderPanel() {
+        
+        UploadContainer.add(new UploaderUi());
     }
     
     private void addDownloaderPanel() {
@@ -83,7 +90,7 @@ public class FTPFrame extends javax.swing.JFrame {
         BottomContainer.setLayout(new java.awt.GridLayout(1, 2));
 
         UploadContainer.setToolTipText(null);
-        UploadContainer.setLayout(new java.awt.GridBagLayout());
+        UploadContainer.setLayout(new java.awt.GridLayout());
         BottomContainer.add(UploadContainer);
 
         DownloadContainer.setToolTipText(null);
