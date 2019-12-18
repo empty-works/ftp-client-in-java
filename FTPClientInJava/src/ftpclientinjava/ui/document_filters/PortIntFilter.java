@@ -3,7 +3,7 @@
  * Hovercraft Full of Eels: 
  * https://stackoverflow.com/questions/11093326/restricting-jtextfield-input-to-integers
  */
-package ftpclientinjava.ui;
+package ftpclientinjava.ui.document_filters;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

@@ -2,11 +2,13 @@
  */
 package ftpclientinjava.ui;
 
+import ftpclientinjava.ui.document_filters.PortIntFilter;
 import ftpclientinjava.LoginHandler;
 import ftpclientinjava.beans.UserLoginInput;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -24,6 +26,13 @@ public class LoginUi extends javax.swing.JPanel {
         initComponents();
         
         this.userLogin = userLogin;
+        setIntFilterOnPort();
+    }
+    
+    private void setIntFilterOnPort() {
+        
+        PlainDocument doc = (PlainDocument) PortTextField.getDocument();
+        doc.setDocumentFilter(new PortIntFilter());
     }
     
     private void setServer(String server) {
@@ -184,15 +193,18 @@ public class LoginUi extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         LogCon4.add(PortLabel, gridBagConstraints);
 
-        PortTextField.setText("0");
+        PortTextField.setColumns(4);
         PortTextField.setToolTipText(null);
+        PortTextField.setMinimumSize(new java.awt.Dimension(250, 19));
+        PortTextField.setPreferredSize(new java.awt.Dimension(250, 19));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 100);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         LogCon4.add(PortTextField, gridBagConstraints);
 
         add(LogCon4);
