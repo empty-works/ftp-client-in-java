@@ -43,7 +43,7 @@ public class LoginUi extends javax.swing.JPanel {
     
     private void setPort(String port) {
         
-        userLogin.port = Integer.getInteger(port);
+        userLogin.port = Integer.parseInt(port);
     }
     
     private void sendToLoginHandler() throws IOException {
