@@ -11,7 +11,7 @@ import javax.swing.text.DocumentFilter.FilterBypass;
  *
  * @author MP
  */
-public class CompositeFiltersFilter {
+public class CompositeFiltersFilter extends DocumentFilter {
     
     private DocumentFilter[] filters;
     
