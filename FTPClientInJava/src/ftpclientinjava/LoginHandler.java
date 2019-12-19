@@ -3,6 +3,7 @@
 package ftpclientinjava;
 
 import ftpclientinjava.beans.UserLoginInput;
+import ftpclientinjava.ui.StatusPanel;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -18,15 +19,18 @@ public class LoginHandler {
     private String password;
     private int port;
     private Connection connection;
-    private FTPClient ftpClient;
+    private StatusPanel statusPanel;
+    private static FTPClient ftpClient;
+    private static boolean isConnected = false;
     
     public LoginHandler(UserLoginInput userLogin) {
         
         this.userLogin = userLogin;
     }
     
-    public void login() throws IOException {
+    public void login(StatusPanel statusPanel) throws IOException {
         
+        this.statusPanel = statusPanel;
         this.server = userLogin.server;
         this.username = userLogin.username;
         this.password = userLogin.password;
@@ -43,6 +47,6 @@ public class LoginHandler {
     
     private void createFtpClient() throws IOException {
         
-        ftpClient = connection.getFTPClient();
+        ftpClient = connection.getFTPClient(statusPanel);
     }
 }

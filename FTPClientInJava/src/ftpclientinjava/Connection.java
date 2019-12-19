@@ -2,6 +2,7 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.ui.StatusPanel;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
@@ -44,6 +45,21 @@ public class Connection {
         }
         
         ftpClient.login(username, password);
+        return ftpClient;
+    }
+    
+    public FTPClient getFTPClient(StatusPanel statusPanel) throws IOException {
+        
+        ftpClient.connect(server, port);
+        int reply = ftpClient.getReplyCode();
+        if(!FTPReply.isPositiveCompletion(reply)) {
+            ftpClient.disconnect();
+            statusPanel.addText("Cannot connect to server...");
+            throw new IOException("Exception in connecting to FTP server");
+        }
+        
+        ftpClient.login(username, password);
+        statusPanel.addText("Successfully connected...");
         return ftpClient;
     }
 }

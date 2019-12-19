@@ -67,7 +67,7 @@ public class LoginUi extends javax.swing.JPanel {
     private void sendToLoginHandler() throws IOException {
         
         loginHandler = new LoginHandler(userLogin);
-        loginHandler.login();
+        loginHandler.login(statusPanel);
     }
     
     
