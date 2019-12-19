@@ -17,7 +17,7 @@ public class UploaderUi extends javax.swing.JPanel {
     public UploaderUi() {
         initComponents();
         
-        startupFileChooser();
+        
     }
     
     private void startupFileChooser() {
