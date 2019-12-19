@@ -21,7 +21,7 @@ public class StatusPanel extends javax.swing.JPanel {
     
     public void addText(String text) {
         
-        StatusTextArea.removeAll();
+        StatusTextArea.setText("");
         sb.append("\n" + text);
         StatusTextArea.append(sb.toString());
     }
