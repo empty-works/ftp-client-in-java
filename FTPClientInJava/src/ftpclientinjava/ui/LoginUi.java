@@ -21,14 +21,16 @@ public class LoginUi extends javax.swing.JPanel {
 
     private UserLoginInput userLogin;
     private LoginHandler loginHandler;
+    private StatusPanel statusPanel;
     
     /**
      * 
      */
-    public LoginUi(UserLoginInput userLogin) {
+    public LoginUi(UserLoginInput userLogin, StatusPanel statusPanel) {
         initComponents();
         
         this.userLogin = userLogin;
+        this.statusPanel = statusPanel;
         setPortFilters();
     }
     
