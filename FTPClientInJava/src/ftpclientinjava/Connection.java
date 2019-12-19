@@ -59,7 +59,9 @@ public class Connection {
         }
         
         ftpClient.login(username, password);
-        statusPanel.addText("Successfully connected...");
+        statusPanel.addText("Waiting for welcome string...");
+        statusPanel.addText("From server: " + ftpClient.getReplyString());
+        statusPanel.addText("Successfully connected to server...");
         return ftpClient;
     }
 }

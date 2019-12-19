@@ -61,6 +61,7 @@ public class FTPFrame extends javax.swing.JFrame {
         DownloadContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Basic FTP Client in Java");
         setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -91,7 +92,7 @@ public class FTPFrame extends javax.swing.JFrame {
         BottomContainer.setLayout(new java.awt.GridLayout(1, 2));
 
         UploadContainer.setToolTipText(null);
-        UploadContainer.setLayout(new java.awt.GridLayout());
+        UploadContainer.setLayout(new java.awt.GridLayout(1, 0));
         BottomContainer.add(UploadContainer);
 
         DownloadContainer.setToolTipText(null);
@@ -103,7 +104,7 @@ public class FTPFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.weighty = 0.4;
         getContentPane().add(BottomContainer, gridBagConstraints);
 
         pack();
