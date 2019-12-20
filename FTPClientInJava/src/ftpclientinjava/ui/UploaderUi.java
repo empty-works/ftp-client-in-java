@@ -3,7 +3,10 @@
 package ftpclientinjava.ui;
 
 import java.io.File;
-import javax.swing.JFileChooser;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -11,25 +14,30 @@ import javax.swing.JFileChooser;
  */
 public class UploaderUi extends javax.swing.JPanel {
 
-    /**
-     * 
-     */
+    private DefaultMutableTreeNode root;
+    private DefaultTreeModel treeModel;
+    private JTree tree;
+
     public UploaderUi() {
         initComponents();
         
+        initRoot(); 
+        initTree();
+   }
+    
+    private void initRoot() {
         
+        File fileRoot = new File("C:/");
+        root = new DefaultMutableTreeNode(fileRoot);
+        treeModel = new DefaultTreeModel(root);
     }
     
-    private void startupFileChooser() {
+    private void initTree() {
         
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        int result = fileChooser.showOpenDialog(this);
-        if(result == JFileChooser.APPROVE_OPTION) {
-            
-            File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-        }
+        tree = new JTree(treeModel);
+        tree.setShowsRootHandles(true);
+        JScrollPane treeScrollPane = new JScrollPane(tree);
+        this.add(treeScrollPane);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +45,8 @@ public class UploaderUi extends javax.swing.JPanel {
     private void initComponents() {
 
         setToolTipText(null);
-        setLayout(new java.awt.GridBagLayout());
+        setOpaque(false);
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 
