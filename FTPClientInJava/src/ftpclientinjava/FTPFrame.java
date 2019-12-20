@@ -41,7 +41,9 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addUploaderPanel() {
         
-        UploadContainer.add(new UploaderUi());
+        UploaderUi uu = new UploaderUi();
+        UploadContainer.add(uu);
+        uu.run();
     }
     
     private void addDownloaderPanel() {

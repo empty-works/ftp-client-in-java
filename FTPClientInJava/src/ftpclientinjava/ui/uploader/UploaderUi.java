@@ -12,22 +12,30 @@ import javax.swing.tree.DefaultTreeModel;
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel {
+public class UploaderUi extends javax.swing.JPanel implements Runnable {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
     private JTree tree;
+    private File fileRoot;
 
     public UploaderUi() {
         initComponents();
         
+        
+    }
+    
+    @Override
+    public void run() {
+        
         initRoot(); 
         initTree();
-   }
+        createChildNodes();
+    }
     
     private void initRoot() {
         
-        File fileRoot = new File("C:/");
+        fileRoot = new File("C:/");
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
@@ -38,6 +46,12 @@ public class UploaderUi extends javax.swing.JPanel {
         tree.setShowsRootHandles(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         this.add(treeScrollPane);
+    }
+    
+    private void createChildNodes() {
+        
+        ChildNodeCreator cnc = new ChildNodeCreator(fileRoot, root);
+        new Thread(cnc).start();
     }
 
     @SuppressWarnings("unchecked")
