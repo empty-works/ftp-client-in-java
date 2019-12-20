@@ -1,6 +1,6 @@
 /*
  */
-package ftpclientinjava.ui;
+package ftpclientinjava.ui.uploader;
 
 import java.io.File;
 import javax.swing.JScrollPane;
@@ -28,7 +28,7 @@ public class UploaderUi extends javax.swing.JPanel {
     private void initRoot() {
         
         File fileRoot = new File("C:/");
-        root = new DefaultMutableTreeNode(fileRoot);
+        root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
     
@@ -46,7 +46,7 @@ public class UploaderUi extends javax.swing.JPanel {
 
         setToolTipText(null);
         setOpaque(false);
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
     }// </editor-fold>//GEN-END:initComponents
 
 

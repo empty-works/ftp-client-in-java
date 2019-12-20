@@ -6,7 +6,7 @@ import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
-import ftpclientinjava.ui.UploaderUi;
+import ftpclientinjava.ui.uploader.UploaderUi;
 
 /**
  *
