@@ -2,6 +2,8 @@
  */
 package ftpclientinjava.ui;
 
+import java.io.File;
+import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -19,7 +21,23 @@ public class LocalFileBrowser extends javax.swing.JPanel {
     public LocalFileBrowser() {
         initComponents();
         
+        initRoot(); 
+        initTree();
+   }
+    
+    private void initRoot() {
         
+        File fileRoot = new File("C:/");
+        root = new DefaultMutableTreeNode(fileRoot);
+        treeModel = new DefaultTreeModel(root);
+    }
+    
+    private void initTree() {
+        
+        tree = new JTree(treeModel);
+        tree.setShowsRootHandles(true);
+        JScrollPane treeScrollPane = new JScrollPane(tree);
+        this.add(treeScrollPane);
     }
 
     @SuppressWarnings("unchecked")
@@ -28,17 +46,7 @@ public class LocalFileBrowser extends javax.swing.JPanel {
 
         setToolTipText(null);
         setOpaque(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
-        );
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 
