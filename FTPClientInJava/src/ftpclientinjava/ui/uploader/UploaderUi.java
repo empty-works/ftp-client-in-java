@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultTreeModel;
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel implements Runnable {
+public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
@@ -25,13 +25,10 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
         
     }
     
-    @Override
-    public void run() {
+    public void initAll() {
         
         initRoot(); 
         createChildNodes();
-        initTree();
-        
     }
     
     private void initRoot() {
@@ -40,21 +37,23 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
+
+    private void createChildNodes() {
+        
+        ChildNodeCreator cnc = new ChildNodeCreator(fileRoot, root, this);
+        cnc.execute();
+    }
     
-    private void initTree() {
+    @Override
+    public void createTree() {
         
         tree = new JTree(treeModel);
-        //tree.setShowsRootHandles(true);
+        tree.setShowsRootHandles(true);
         tree.setRootVisible(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         this.add(treeScrollPane);
-    }
-    
-    private void createChildNodes() {
-        
-        ChildNodeCreator cnc = new ChildNodeCreator(fileRoot, root);
-        cnc.createChildren(fileRoot, root);
-        //new Thread(cnc).start();
+        this.revalidate();
+        this.repaint();
     }
 
     @SuppressWarnings("unchecked")
