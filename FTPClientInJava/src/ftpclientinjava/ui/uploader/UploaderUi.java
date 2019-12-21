@@ -69,13 +69,41 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        ProgressBarContainer = new javax.swing.JPanel();
+        TreeContainer = new javax.swing.JPanel();
 
         setToolTipText(null);
         setOpaque(false);
-        setLayout(new java.awt.GridLayout(1, 0));
+        setLayout(new java.awt.GridBagLayout());
+
+        ProgressBarContainer.setToolTipText(null);
+        ProgressBarContainer.setOpaque(false);
+        ProgressBarContainer.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        add(ProgressBarContainer, gridBagConstraints);
+
+        TreeContainer.setToolTipText(null);
+        TreeContainer.setOpaque(false);
+        TreeContainer.setLayout(new java.awt.GridLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        add(TreeContainer, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ProgressBarContainer;
+    private javax.swing.JPanel TreeContainer;
     // End of variables declaration//GEN-END:variables
 }
