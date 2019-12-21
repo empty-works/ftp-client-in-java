@@ -9,4 +9,6 @@ package ftpclientinjava.ui.uploader;
 public interface TreeCreator {
     
     public void createTree();
+    public void setPropertyChange();
+    public void doneCreatingTree();
 }

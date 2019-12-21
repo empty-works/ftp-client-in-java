@@ -53,6 +53,18 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
         this.revalidate();
         this.repaint();
     }
+    
+    @Override
+    public void setPropertyChange() {
+        
+        
+    }
+    
+    @Override
+    public void doneCreatingTree() {
+        
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
