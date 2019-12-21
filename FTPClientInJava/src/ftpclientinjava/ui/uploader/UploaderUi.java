@@ -21,8 +21,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
 
     public UploaderUi() {
         initComponents();
-        
-        
     }
     
     public void initAll() {

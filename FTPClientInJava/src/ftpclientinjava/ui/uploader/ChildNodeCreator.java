@@ -25,14 +25,6 @@ public class ChildNodeCreator extends SwingWorker<Boolean, Void> {
         this.treeCreator = treeCreator;
     }
     
-    /*
-    @Override
-    public void run() {
-        
-        createChildren(fileRoot, root);
-    }
-    */
-    
     private void createChildren(File fileRoot, 
             DefaultMutableTreeNode node) {
 
