@@ -31,7 +31,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     
     private void initRoot() {
         
-        fileRoot = new File("G:/");
+        fileRoot = new File(System.getProperty("user.home"));
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
