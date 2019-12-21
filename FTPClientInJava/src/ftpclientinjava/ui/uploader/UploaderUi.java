@@ -29,8 +29,9 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
     public void run() {
         
         initRoot(); 
-        initTree();
         createChildNodes();
+        initTree();
+        
     }
     
     private void initRoot() {
@@ -43,17 +44,17 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
     private void initTree() {
         
         tree = new JTree(treeModel);
-        tree.setShowsRootHandles(true);
+        //tree.setShowsRootHandles(true);
+        tree.setRootVisible(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         this.add(treeScrollPane);
-        this.revalidate();
-        this.repaint();
     }
     
     private void createChildNodes() {
         
         ChildNodeCreator cnc = new ChildNodeCreator(fileRoot, root);
-        new Thread(cnc).start();
+        cnc.createChildren(fileRoot, root);
+        //new Thread(cnc).start();
     }
 
     @SuppressWarnings("unchecked")
