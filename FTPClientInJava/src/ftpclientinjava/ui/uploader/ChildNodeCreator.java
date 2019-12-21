@@ -33,10 +33,11 @@ public class ChildNodeCreator implements Runnable {
         if (files == null) return;
 
         for (File file : files) {
-            DefaultMutableTreeNode childNode = 
-                    new DefaultMutableTreeNode(new FileNode(file));
-            node.add(childNode);
+            
             if (file.isDirectory()) {
+                DefaultMutableTreeNode childNode = 
+                        new DefaultMutableTreeNode(new FileNode(file));
+                node.add(childNode);
                 createChildren(file, childNode);
             }
         }

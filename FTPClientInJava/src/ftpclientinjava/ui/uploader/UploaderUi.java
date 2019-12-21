@@ -35,7 +35,7 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
     
     private void initRoot() {
         
-        fileRoot = new File("C:/");
+        fileRoot = new File("G:/");
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
@@ -46,6 +46,8 @@ public class UploaderUi extends javax.swing.JPanel implements Runnable {
         tree.setShowsRootHandles(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         this.add(treeScrollPane);
+        this.revalidate();
+        this.repaint();
     }
     
     private void createChildNodes() {
