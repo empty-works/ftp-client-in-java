@@ -2,6 +2,8 @@
  */
 package ftpclientinjava.ui.uploader;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -12,12 +14,15 @@ import javax.swing.tree.DefaultTreeModel;
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
+public class UploaderUi extends javax.swing.JPanel implements TreeCreator, 
+        PropertyChangeListener {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
     private JTree tree;
     private File fileRoot;
+    private ChildNodeCreator childNodeCreator;
+    private boolean isTreeDoneLoading = false;
 
     public UploaderUi() {
         initComponents();
@@ -38,8 +43,9 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
 
     private void createChildNodes() {
         
-        ChildNodeCreator cnc = new ChildNodeCreator(fileRoot, root, this);
-        cnc.execute();
+        childNodeCreator = new ChildNodeCreator(fileRoot, root, this);
+        childNodeCreator.addPropertyChangeListener(this);
+        childNodeCreator.execute();
     }
     
     @Override
@@ -49,15 +55,25 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
         tree.setShowsRootHandles(true);
         tree.setRootVisible(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
-        this.add(treeScrollPane);
-        this.revalidate();
-        this.repaint();
+        TreeContainer.add(treeScrollPane);
+        TreeContainer.revalidate();
+        TreeContainer.repaint();
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        
+        
     }
     
     @Override
     public void setPropertyChange() {
         
-        
+        if(!isTreeDoneLoading) {
+            
+            int progress = childNodeCreator.getProgress();
+            TreeLoadProgressBar.setValue(progress);
+        }
     }
     
     @Override
@@ -72,6 +88,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
         java.awt.GridBagConstraints gridBagConstraints;
 
         ProgressBarContainer = new javax.swing.JPanel();
+        TreeLoadProgressBar = new javax.swing.JProgressBar();
         TreeContainer = new javax.swing.JPanel();
 
         setToolTipText(null);
@@ -81,6 +98,10 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
         ProgressBarContainer.setToolTipText(null);
         ProgressBarContainer.setOpaque(false);
         ProgressBarContainer.setLayout(new java.awt.GridBagLayout());
+
+        TreeLoadProgressBar.setToolTipText(null);
+        ProgressBarContainer.add(TreeLoadProgressBar, new java.awt.GridBagConstraints());
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -105,5 +126,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ProgressBarContainer;
     private javax.swing.JPanel TreeContainer;
+    private javax.swing.JProgressBar TreeLoadProgressBar;
     // End of variables declaration//GEN-END:variables
+  
 }

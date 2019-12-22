@@ -36,7 +36,6 @@ public class ChildNodeCreator extends SwingWorker<Boolean, Void> {
             DefaultMutableTreeNode childNode = 
                         new DefaultMutableTreeNode(new FileNode(file));
                 node.add(childNode);
-            
             if (file.isDirectory()) {
                 
                 createChildren(file, childNode);

@@ -63,7 +63,7 @@ public class FTPFrame extends javax.swing.JFrame {
         DownloadContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Basic FTP Client in Java");
+        setTitle("Basic FTP Client in Java by Empty Works");
         setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
