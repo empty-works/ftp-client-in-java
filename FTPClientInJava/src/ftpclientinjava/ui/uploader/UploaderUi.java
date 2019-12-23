@@ -38,7 +38,15 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator,
         
         fileRoot = new File(System.getProperty("user.home"));
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
-        treeModel = new DefaultTreeModel(root);
+        if(root.getAllowsChildren()) {
+            
+            root.add(new DefaultMutableTreeNode("folder always"));
+        }
+        else {
+            
+            root.add(new DefaultMutableTreeNode("folder never", false));
+        }
+        treeModel = new DefaultTreeModel(root, true);
     }
 
     private void createChildNodes() {
@@ -53,7 +61,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator,
         
         tree = new JTree(treeModel);
         tree.setShowsRootHandles(true);
-        tree.setRootVisible(true);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         TreeContainer.add(treeScrollPane);
         TreeContainer.revalidate();
@@ -63,16 +70,12 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator,
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         
-        
-    }
-    
-    @Override
-    public void setPropertyChange() {
-        
         if(!isTreeDoneLoading) {
             
             int progress = childNodeCreator.getProgress();
+            System.out.println("Progress: " + progress); 
             TreeLoadProgressBar.setValue(progress);
+            TreeLoadProgressBar.repaint();
         }
     }
     
@@ -100,6 +103,8 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator,
         ProgressBarContainer.setLayout(new java.awt.GridBagLayout());
 
         TreeLoadProgressBar.setToolTipText(null);
+        TreeLoadProgressBar.setValue(0);
+        TreeLoadProgressBar.setOpaque(false);
         ProgressBarContainer.add(TreeLoadProgressBar, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
