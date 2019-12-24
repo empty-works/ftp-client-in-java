@@ -42,7 +42,7 @@ public class FTPFrame extends javax.swing.JFrame {
     private void addUploaderPanel() {
         
         UploaderUi uu = new UploaderUi();
-        UploadContainer.add(uu);
+        UploadTopView.add(uu);
         uu.initAll();
     }
     
@@ -60,12 +60,14 @@ public class FTPFrame extends javax.swing.JFrame {
         StatusContainer = new javax.swing.JPanel();
         BottomContainer = new javax.swing.JPanel();
         UploadContainer = new javax.swing.JPanel();
+        UploadTopView = new javax.swing.JPanel();
+        UploadBottomView = new javax.swing.JPanel();
         DownloadContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Basic FTP Client in Java by Empty Works");
-        setMinimumSize(new java.awt.Dimension(1000, 650));
-        setPreferredSize(new java.awt.Dimension(1000, 650));
+        setMinimumSize(new java.awt.Dimension(1100, 750));
+        setPreferredSize(new java.awt.Dimension(1100, 750));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         LoginContainer.setToolTipText(null);
@@ -94,7 +96,17 @@ public class FTPFrame extends javax.swing.JFrame {
         BottomContainer.setLayout(new java.awt.GridLayout(1, 2));
 
         UploadContainer.setToolTipText(null);
-        UploadContainer.setLayout(new java.awt.GridLayout(1, 0));
+        UploadContainer.setLayout(new java.awt.GridLayout(2, 1));
+
+        UploadTopView.setToolTipText(null);
+        UploadTopView.setOpaque(false);
+        UploadTopView.setLayout(new java.awt.GridLayout());
+        UploadContainer.add(UploadTopView);
+
+        UploadBottomView.setToolTipText(null);
+        UploadBottomView.setOpaque(false);
+        UploadContainer.add(UploadBottomView);
+
         BottomContainer.add(UploadContainer);
 
         DownloadContainer.setToolTipText(null);
@@ -154,6 +166,8 @@ public class FTPFrame extends javax.swing.JFrame {
     private javax.swing.JPanel DownloadContainer;
     private javax.swing.JPanel LoginContainer;
     private javax.swing.JPanel StatusContainer;
+    private javax.swing.JPanel UploadBottomView;
     private javax.swing.JPanel UploadContainer;
+    private javax.swing.JPanel UploadTopView;
     // End of variables declaration//GEN-END:variables
 }
