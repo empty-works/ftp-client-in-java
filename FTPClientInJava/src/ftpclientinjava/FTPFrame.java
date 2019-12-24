@@ -105,6 +105,7 @@ public class FTPFrame extends javax.swing.JFrame {
 
         UploadBottomView.setToolTipText(null);
         UploadBottomView.setOpaque(false);
+        UploadBottomView.setLayout(new java.awt.GridLayout());
         UploadContainer.add(UploadBottomView);
 
         BottomContainer.add(UploadContainer);
