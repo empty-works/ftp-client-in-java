@@ -107,9 +107,9 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator,
                     // decide based on some property of your Contact obj
                     FileNode file = (FileNode)  node.getUserObject();
                     if (file.isFileDirectory()) {
-                        setIcon(UIManager.getIcon("FileChooser.homeFolderIcon"));
+                        setIcon(UIManager.getIcon("FileView.directoryIcon"));
                     } else {
-                        setIcon(UIManager.getIcon("FileView.hardDriveIcon"));
+                        setIcon(UIManager.getIcon("FileView.fileIcon"));
                     }
                 }
             }
