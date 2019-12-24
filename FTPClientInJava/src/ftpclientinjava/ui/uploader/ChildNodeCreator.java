@@ -54,7 +54,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> {
         
         System.out.println("Total number of files:" + initialNumFiles);
         progress++;
-        setProgress(progress);
+        //setProgress(progress);
         System.out.println("Progress: " + progress);
         
         if (files == null) return;
@@ -65,7 +65,8 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> {
             
             DefaultMutableTreeNode childNode = 
                         new DefaultMutableTreeNode(new FileNode(file));
-                node.add(childNode);
+            
+            node.add(childNode);
             
             /*
             if (file.isDirectory()) {

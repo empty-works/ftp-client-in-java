@@ -17,6 +17,11 @@ public class FileNode {
         this.file = file;
     }
     
+    public boolean isFileDirectory() {
+        
+        return file.isDirectory();
+    }
+    
     @Override
     public String toString() {
         
