@@ -5,13 +5,17 @@ package ftpclientinjava.ui.uploader;
 import java.io.File;
 import java.io.FileFilter;
 import javax.swing.SwingWorker;
+import javax.swing.event.TreeExpansionEvent;
+import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.ExpandVetoException;
 
 /**
  *
  * @author MP
  */
-public class ChildNodeCreator extends SwingWorker<Void, Void> {
+public class ChildNodeCreator extends SwingWorker<Void, Void> implements 
+        TreeWillExpandListener {
     
     private DefaultMutableTreeNode root;
     private File fileRoot;
@@ -48,14 +52,13 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> {
 
         for (File file : files) {
 
-            DefaultMutableTreeNode childNode = 
-                        new DefaultMutableTreeNode(new FileNode(file));
+            //DefaultMutableTreeNode childNode = 
+            //            new DefaultMutableTreeNode(new FileNode(file));
             
-            node.add(childNode);
+            //node.add(childNode);
             if(file.isDirectory()) {
                 
-                //node.add(childNode);
-                createChildren(file, childNode);
+                //createChildren(file, childNode);
             }
         }
     }
@@ -67,4 +70,14 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> {
             return pathname.isDirectory();
         }
     };
+
+    @Override
+    public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -3,8 +3,6 @@
 package ftpclientinjava.ui.uploader;
 
 import java.awt.Component;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -24,7 +22,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     private JTree tree;
     private File fileRoot;
     private ChildNodeCreator childNodeCreator;
-    private boolean isTreeDoneLoading = false;
 
     public UploaderUi() {
         initComponents();
