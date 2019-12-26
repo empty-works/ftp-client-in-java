@@ -7,21 +7,26 @@ import java.io.File;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.UIManager;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeSelectionModel;
 
 /**
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
+public class UploaderUi extends javax.swing.JPanel implements TreeCreator, TreeSelectionListener {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
     private JTree tree;
     private File fileRoot;
     private ChildNodeCreator childNodeCreator;
+    public static DefaultMutableTreeNode currentNode = null;
 
     public UploaderUi() {
         initComponents();
@@ -47,11 +52,14 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     }
     
     @Override
-    public void createTree() {
+    public void createTree(TreeWillExpandListener twel) {
         
         tree = new JTree(treeModel);
         tree.setShowsRootHandles(true);
         tree.setCellRenderer(new MyTreeCellRenderer());
+        tree.addTreeWillExpandListener(twel);
+        tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        tree.addTreeSelectionListener(this);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         TreeContainer.add(treeScrollPane);
         TreeContainer.revalidate();
@@ -62,6 +70,13 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator {
     public void doneCreatingTree() {
         
         
+    }
+
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+        
+        currentNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+        System.out.println("Current selected node: " + currentNode);
     }
     
     private static class MyTreeCellRenderer extends DefaultTreeCellRenderer {

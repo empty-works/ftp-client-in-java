@@ -40,11 +40,11 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     @Override
     protected void done() {
         
-        treeCreator.createTree();
+        treeCreator.createTree(this);
     }
     
     private void createChildren(File fileRoot, 
-            DefaultMutableTreeNode node) {
+            DefaultMutableTreeNode rootNode) {
 
         File[] files = fileRoot.listFiles(directoryOnlyFilter);
         
@@ -52,14 +52,16 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
 
         for (File file : files) {
 
-            //DefaultMutableTreeNode childNode = 
-            //            new DefaultMutableTreeNode(new FileNode(file));
+            DefaultMutableTreeNode childNode = 
+                        new DefaultMutableTreeNode(new FileNode(file));
             
-            //node.add(childNode);
+            rootNode.add(childNode);
+            /*
             if(file.isDirectory()) {
                 
                 //createChildren(file, childNode);
             }
+            */
         }
     }
     
@@ -73,11 +75,13 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
 
     @Override
     public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
     }
 
     @Override
     public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
     }
 }
