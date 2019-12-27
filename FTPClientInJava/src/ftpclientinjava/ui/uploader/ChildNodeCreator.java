@@ -60,7 +60,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
             System.out.println("Number of child files: " + childFiles.length);
             System.out.println("File name: " + file.getName());
             
-            if(file.isDirectory()) {
+            if(file.isDirectory() && childFiles.length > 0) {
                 
                 File dummyFile = new File("");
                 childNode.add(new DefaultMutableTreeNode(new FileNode(dummyFile)));
