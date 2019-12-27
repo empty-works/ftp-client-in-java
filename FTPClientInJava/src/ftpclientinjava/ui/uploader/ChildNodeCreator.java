@@ -9,6 +9,7 @@ import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.ExpandVetoException;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -58,7 +59,6 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
             rootNode.add(childNode);
             String[] childFiles = file.list();
             System.out.println("Number of child files: " + childFiles.length);
-            System.out.println("File name: " + file.getName());
             
             if(file.isDirectory() && childFiles.length > 0) {
                 
@@ -81,7 +81,11 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     @Override
     public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
         
+        System.out.println("Expanded path: " + event.getPath());
+        TreePath path = event.getPath();
         
+        DefaultMutableTreeNode newRoot = new DefaultMutableTreeNode(new FileNode(fileRoot));
+        System.out.println("newRoot value: " + newRoot);
     }
 
     @Override
