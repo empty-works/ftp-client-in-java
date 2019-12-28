@@ -15,11 +15,18 @@ public class TreePathToStringConverter {
     public static String getStringFilePath(TreePath treePath) {
         
         StringBuilder sb = new StringBuilder();
+        sb.append(UploaderUi.systemPath);
         Object[] nodes = treePath.getPath();
-        for(int i = 0; i < nodes.length; i++) {
+        System.out.println("Converting " + treePath.toString() + "to ...");
+        
+        if(nodes.length > 1) { // Check if there are more nodes after the system user
+            for(int i = 1; i < nodes.length; i++) { // Skip over system user because it is already included the string builder
             
             sb.append(File.separatorChar).append(nodes[i].toString());
+            }
         }
+        
+        System.out.println("..." + sb.toString());
         return sb.toString();
     }
 }

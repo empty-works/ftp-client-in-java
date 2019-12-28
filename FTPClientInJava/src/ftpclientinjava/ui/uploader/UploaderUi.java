@@ -13,13 +13,14 @@ import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 /**
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel implements TreeCreator, TreeSelectionListener {
+public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeSelectionListener {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
@@ -27,6 +28,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator, TreeS
     private File fileRoot;
     private ChildNodeCreator childNodeCreator;
     public static DefaultMutableTreeNode currentNode = null;
+    public static String systemPath = System.getProperty("user.home");
 
     public UploaderUi() {
         initComponents();
@@ -40,7 +42,8 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator, TreeS
     
     private void initRoot() {
         
-        fileRoot = new File(System.getProperty("user.home"));
+        fileRoot = new File(systemPath);
+        System.out.println("System path: " + fileRoot);
         root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         treeModel = new DefaultTreeModel(root);
     }
@@ -77,6 +80,12 @@ public class UploaderUi extends javax.swing.JPanel implements TreeCreator, TreeS
         
         currentNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
         System.out.println("Current selected node: " + currentNode);
+    }
+
+    @Override
+    public void updateTree(MutableTreeNode child, MutableTreeNode parent, int index) {
+        
+        
     }
     
     private static class MyTreeCellRenderer extends DefaultTreeCellRenderer {
