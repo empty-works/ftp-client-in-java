@@ -99,7 +99,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
         System.out.println("newFileRoot: " + newFileRoot);
         DefaultMutableTreeNode newRoot = new DefaultMutableTreeNode(new FileNode(newFileRoot));
         System.out.println("newRoot value: " + newRoot);
-        insertNode(newFileRoot, newRoot);
+        //insertNode(newFileRoot, newRoot);
     }
 
     @Override
