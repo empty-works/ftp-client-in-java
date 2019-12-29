@@ -20,7 +20,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     
     private DefaultMutableTreeNode root;
     private File fileRoot;
-    private TreeHandler treeCreator;
+    private TreeHandler treeHandler;
     
     public ChildNodeCreator(File fileRoot, 
             DefaultMutableTreeNode root, 
@@ -28,7 +28,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
         
         this.fileRoot = fileRoot;
         this.root = root;
-        this.treeCreator = treeCreator;
+        this.treeHandler = treeCreator;
     }
 
     @Override
@@ -41,11 +41,10 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     @Override
     protected void done() {
         
-        treeCreator.createTree(this);
+        treeHandler.createTree(this);
     }
     
-    private void createChildren(File fileRoot, 
-            DefaultMutableTreeNode rootNode) {
+    private void createChildren(File fileRoot, DefaultMutableTreeNode rootNode) {
 
         File[] files = fileRoot.listFiles(directoryOnlyFilter);
         
@@ -54,19 +53,31 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
         for (File file : files) {
 
             DefaultMutableTreeNode childNode = 
-                        new DefaultMutableTreeNode(new FileNode(file));
+                    new DefaultMutableTreeNode(new FileNode(file));
             
             rootNode.add(childNode);
-            String[] childFiles = file.list();
-            System.out.println("Number of child files: " + childFiles.length + " for " + file.toString());
+            //String[] childFiles = file.list();
+            //System.out.println("Number of child files: " + childFiles.length + 
+            //        " for " + file.toString());
             
-            if(file.isDirectory() && childFiles.length > 0) {
+            if(file.isDirectory() /*&& childFiles.length > 0*/) {
                 
                 File dummyFile = new File("");
                 childNode.add(new DefaultMutableTreeNode(new FileNode(dummyFile)));
-                //createChildren(file, childNode);
             }
+        }
+    }
+    
+    private void insertNode(File fileRoot, DefaultMutableTreeNode rootNode) {
+        
+        File[] files = fileRoot.listFiles(directoryOnlyFilter);
+        
+        for (File file : files) {
+
+            DefaultMutableTreeNode childNode = 
+                    new DefaultMutableTreeNode(new FileNode(file));
             
+            treeHandler.updateTree(childNode, rootNode, rootNode.getChildCount());
         }
     }
     
@@ -88,7 +99,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
         System.out.println("newFileRoot: " + newFileRoot);
         DefaultMutableTreeNode newRoot = new DefaultMutableTreeNode(new FileNode(newFileRoot));
         System.out.println("newRoot value: " + newRoot);
-        createChildren(newFileRoot, newRoot);
+        insertNode(newFileRoot, newRoot);
     }
 
     @Override

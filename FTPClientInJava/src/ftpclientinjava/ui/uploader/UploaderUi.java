@@ -85,7 +85,8 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     @Override
     public void updateTree(MutableTreeNode child, MutableTreeNode parent, int index) {
         
-        
+        treeModel.insertNodeInto(child, parent, index);
+        treeModel.reload();
     }
     
     private static class MyTreeCellRenderer extends DefaultTreeCellRenderer {
