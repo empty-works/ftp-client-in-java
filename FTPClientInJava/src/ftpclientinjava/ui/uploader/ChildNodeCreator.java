@@ -86,18 +86,22 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
                 System.out.println("Adding children to directory..." + file);
                 addChildren(file, currentDir);
             }
+            /*
             else {
                 // Add to files vector for later processing.
                 System.out.println("Adding file..." + file);
                 files.addElement(thisObject);
             }
+            */
         }
         
         // Pass for files.
+        /*
         for(int fnum = 0; fnum < files.size(); fnum++) {
             
             currentDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
         }
+        */
         
         /*
         File[] files = fileRoot.listFiles(directoryOnlyFilter);
