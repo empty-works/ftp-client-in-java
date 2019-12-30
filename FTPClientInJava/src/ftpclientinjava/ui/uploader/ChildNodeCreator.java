@@ -4,6 +4,8 @@ package ftpclientinjava.ui.uploader;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Collections;
+import java.util.Vector;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeWillExpandListener;
@@ -34,7 +36,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     @Override
     public Void doInBackground() throws Exception {
         
-        createChildren(fileRoot, root);
+        addChildren(fileRoot, root);
         return null;
     }
     
@@ -44,8 +46,60 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
         treeHandler.createTree(this);
     }
     
-    private void createChildren(File fileRoot, DefaultMutableTreeNode rootNode) {
+    private void addChildren(File dirRoot, DefaultMutableTreeNode currentTopNode) {
 
+        String currentPath = dirRoot.getPath();
+        DefaultMutableTreeNode currentDir = new DefaultMutableTreeNode(currentPath);
+        if(currentTopNode != null) {
+            
+            currentTopNode.add(currentDir);
+        }
+        
+        Vector oldList = new Vector();
+        String[] temp = dirRoot.list();
+        for(int i = 0; i < temp.length; i++) {
+            
+            oldList.addElement(temp[i]);
+        }
+        Collections.sort(oldList, String.CASE_INSENSITIVE_ORDER);
+        
+        File file;
+        
+        Vector files = new Vector();
+        // Make two passes, one for directories and one for files.
+        // Pass for directories.
+        for(int i = 0; i < oldList.size(); i++) {
+            
+            String thisObject = (String) oldList.elementAt(i);
+            String newPath;
+            if(currentPath.equals(".")) {
+                
+                newPath = thisObject;
+            }
+            else {
+                
+                newPath = currentPath + File.separator + thisObject;
+            }
+            if((file = new File(newPath)).isDirectory()) {
+                
+                // Recursion for directory.
+                System.out.println("Adding children to directory..." + file);
+                addChildren(file, currentDir);
+            }
+            else {
+                // Add to files vector for later processing.
+                System.out.println("Adding file..." + file);
+                files.addElement(thisObject);
+            }
+        }
+        
+        // Pass for files.
+        for(int fnum = 0; fnum < files.size(); fnum++) {
+            
+            currentDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
+        }
+        
+        /*
         File[] files = fileRoot.listFiles(directoryOnlyFilter);
         
         if (files == null) return;
@@ -60,12 +114,13 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
             //System.out.println("Number of child files: " + childFiles.length + 
             //        " for " + file.toString());
             
-            if(file.isDirectory() /*&& childFiles.length > 0*/) {
+            if(file.isDirectory() && childFiles.length > 0) {
                 
                 File dummyFile = new File("");
                 childNode.add(new DefaultMutableTreeNode(new FileNode(dummyFile)));
             }
         }
+    */
     }
     
     private void insertNode(File fileRoot, DefaultMutableTreeNode rootNode) {
