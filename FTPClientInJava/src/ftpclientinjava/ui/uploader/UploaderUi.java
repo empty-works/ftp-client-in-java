@@ -41,9 +41,10 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     
     private void initRoot() {
         
-        fileRoot = new File(systemPath);
-        System.out.println("System path: " + fileRoot);
-        root = new DefaultMutableTreeNode(new FileNode(fileRoot));
+        //fileRoot = new File(systemPath);
+        //System.out.println("System path: " + fileRoot);
+        //root = new DefaultMutableTreeNode(new FileNode(fileRoot));
+        root = new DefaultMutableTreeNode();
         treeModel = new DefaultTreeModel(root);
     }
 
@@ -99,7 +100,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
                 if (node.getUserObject() instanceof String) {
                     // your root node, since you just put a String as a user object                    
-                    setIcon(UIManager.getIcon("FileView.computerIcon"));
+                    setIcon(UIManager.getIcon("FileView.directoryIcon"));
                 } else if (node.getUserObject() instanceof FileNode) {
                     // decide based on some property of your Contact obj
                     FileNode file = (FileNode)  node.getUserObject();
