@@ -4,12 +4,15 @@ package ftpclientinjava.ui.uploader;
 
 import java.awt.Component;
 import java.io.File;
+import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.SwingWorker;
 import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeWillExpandListener;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
@@ -26,6 +29,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     private JTree tree;
     private File fileRoot;
     private ChildNodeCreator childNodeCreator;
+    private FileSystemView fileSystemView;
     public static DefaultMutableTreeNode currentNode = null;
     public static String systemPath = System.getProperty("user.home");
 
@@ -46,6 +50,75 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         //root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         root = new DefaultMutableTreeNode();
         treeModel = new DefaultTreeModel(root);
+        initTreeSelectionListener();
+        showFileSystemRoots();
+    }
+    
+    private void initTreeSelectionListener() {
+        
+        TreeSelectionListener treeSelectionListener = new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent tse) {
+                
+                DefaultMutableTreeNode node = 
+                        (DefaultMutableTreeNode) tse.getPath().getLastPathComponent();
+                showChildren(node);
+            }
+        };
+    }
+    
+    // show the file system roots.
+    private void showFileSystemRoots() {
+        
+        File[] roots = fileSystemView.getRoots();
+        for (File fileSystemRoot : roots) {
+            DefaultMutableTreeNode node = new DefaultMutableTreeNode(fileSystemRoot);
+            root.add( node );
+            File[] files = fileSystemView.getFiles(fileSystemRoot, true);
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    node.add(new DefaultMutableTreeNode(file));
+                }
+            }
+        }
+    }
+        
+    
+    /** Add the files that are contained within the directory of this node.
+    Thanks to Hovercraft Full Of Eels for the SwingWorker fix. */
+    private void showChildren(final DefaultMutableTreeNode node) {
+        tree.setEnabled(false);
+
+        SwingWorker<Void, File> worker = new SwingWorker<Void, File>() {
+            @Override
+            public Void doInBackground() {
+                File file = (File) node.getUserObject();
+                if (file.isDirectory()) {
+                    File[] files = fileSystemView.getFiles(file, true); //!!
+                    if (node.isLeaf()) {
+                        for (File child : files) {
+                            if (child.isDirectory()) {
+                                publish(child);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void process(List<File> chunks) {
+                for (File child : chunks) {
+                    node.add(new DefaultMutableTreeNode(child));
+                }
+            }
+
+            @Override
+            protected void done() {
+                tree.setEnabled(true);
+            }
+        };
+        worker.execute();
     }
 
     private void createChildNodes() {
@@ -65,8 +138,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         tree.addTreeSelectionListener(this);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         TreeContainer.add(treeScrollPane);
-        TreeContainer.revalidate();
-        TreeContainer.repaint();
     }
     
     @Override
