@@ -50,9 +50,11 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         //root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         root = new DefaultMutableTreeNode();
         treeModel = new DefaultTreeModel(root);
+        initTreeSelectionListener();
+        showFileSystemRoots();
     }
     
-    private void addTreeSelectionListener() {
+    private void initTreeSelectionListener() {
         
         TreeSelectionListener treeSelectionListener = new TreeSelectionListener() {
             @Override
@@ -64,6 +66,23 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
             }
         };
     }
+    
+    // show the file system roots.
+    private void showFileSystemRoots() {
+        
+        File[] roots = fileSystemView.getRoots();
+        for (File fileSystemRoot : roots) {
+            DefaultMutableTreeNode node = new DefaultMutableTreeNode(fileSystemRoot);
+            root.add( node );
+            File[] files = fileSystemView.getFiles(fileSystemRoot, true);
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    node.add(new DefaultMutableTreeNode(file));
+                }
+            }
+        }
+    }
+        
     
     /** Add the files that are contained within the directory of this node.
     Thanks to Hovercraft Full Of Eels for the SwingWorker fix. */
@@ -119,8 +138,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         tree.addTreeSelectionListener(this);
         JScrollPane treeScrollPane = new JScrollPane(tree);
         TreeContainer.add(treeScrollPane);
-        TreeContainer.revalidate();
-        TreeContainer.repaint();
     }
     
     @Override
