@@ -30,6 +30,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     private File fileRoot;
     private ChildNodeCreator childNodeCreator;
     private FileSystemView fileSystemView;
+    private TreeSelectionListener treeSelectionListener;
     public static DefaultMutableTreeNode currentNode = null;
     public static String systemPath = System.getProperty("user.home");
 
@@ -40,7 +41,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     public void initAll() {
         
         initRoot(); 
-        createChildNodes();
+        //createChildNodes();
     }
     
     private void initRoot() {
@@ -50,13 +51,15 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         //root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         root = new DefaultMutableTreeNode();
         treeModel = new DefaultTreeModel(root);
+        fileSystemView = FileSystemView.getFileSystemView();
         initTreeSelectionListener();
         showFileSystemRoots();
+        createTree();
     }
     
     private void initTreeSelectionListener() {
         
-        TreeSelectionListener treeSelectionListener = new TreeSelectionListener() {
+        treeSelectionListener = new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent tse) {
                 
@@ -82,8 +85,17 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
             }
         }
     }
-        
     
+    private void createTree() {
+        
+        tree = new JTree(treeModel);
+        tree.setRootVisible(false);
+        tree.addTreeSelectionListener(treeSelectionListener);
+        tree.expandRow(0);
+        JScrollPane treeScrollPane = new JScrollPane(tree);
+        TreeContainer.add(treeScrollPane);
+    }
+        
     /** Add the files that are contained within the directory of this node.
     Thanks to Hovercraft Full Of Eels for the SwingWorker fix. */
     private void showChildren(final DefaultMutableTreeNode node) {
