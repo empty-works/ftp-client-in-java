@@ -100,39 +100,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     Thanks to Hovercraft Full Of Eels for the SwingWorker fix. */
     private void showChildren(final DefaultMutableTreeNode node) {
         tree.setEnabled(false);
-
-        /*
-        SwingWorker<Void, File> worker = new SwingWorker<Void, File>() {
-            @Override
-            public Void doInBackground() {
-                File file = (File) node.getUserObject();
-                if (file.isDirectory()) {
-                    File[] files = fileSystemView.getFiles(file, true); //!!
-                    if (node.isLeaf()) {
-                        for (File child : files) {
-                            if (child.isDirectory()) {
-                                publish(child);
-                            }
-                        }
-                    }
-                }
-                return null;
-            }
-
-            @Override
-            protected void process(List<File> chunks) {
-                for (File child : chunks) {
-                    node.add(new DefaultMutableTreeNode(child));
-                }
-            }
-
-            @Override
-            protected void done() {
-                tree.setEnabled(true);
-            }
-        };
-        worker.execute();
-*/
         ChildNodeProcessor cnp = new ChildNodeProcessor(node, fileSystemView, tree);
         cnp.execute();
     }
