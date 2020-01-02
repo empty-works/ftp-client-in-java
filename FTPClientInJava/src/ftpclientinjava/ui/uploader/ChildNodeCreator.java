@@ -43,7 +43,7 @@ public class ChildNodeCreator extends SwingWorker<Void, Void> implements
     @Override
     protected void done() {
         
-        treeHandler.createTree(this);
+        
     }
     
     private void addChildren(File dirRoot, DefaultMutableTreeNode currentTopNode) {

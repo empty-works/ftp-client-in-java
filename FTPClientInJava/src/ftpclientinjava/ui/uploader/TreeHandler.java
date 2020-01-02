@@ -11,7 +11,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public interface TreeHandler {
     
-    public void createTree(TreeWillExpandListener twel);
     public void doneCreatingTree();
     public void updateTree(DefaultMutableTreeNode child, DefaultMutableTreeNode parent, int index);
 }

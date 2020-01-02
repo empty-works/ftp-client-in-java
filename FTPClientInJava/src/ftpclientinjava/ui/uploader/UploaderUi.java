@@ -103,20 +103,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         ChildNodeProcessor cnp = new ChildNodeProcessor(node, fileSystemView, tree);
         cnp.execute();
     }
-
-    
-    @Override
-    public void createTree(TreeWillExpandListener twel) {
-        
-        tree = new JTree(treeModel);
-        tree.setShowsRootHandles(true);
-        tree.setCellRenderer(new MyTreeCellRenderer());
-        tree.addTreeWillExpandListener(twel);
-        tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-        tree.addTreeSelectionListener(this);
-        JScrollPane treeScrollPane = new JScrollPane(tree);
-        TreeContainer.add(treeScrollPane);
-    }
     
     @Override
     public void doneCreatingTree() {
