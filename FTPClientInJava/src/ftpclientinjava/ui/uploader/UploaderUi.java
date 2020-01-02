@@ -104,11 +104,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         cnp.execute();
     }
 
-    private void createChildNodes() {
-        
-        childNodeCreator = new ChildNodeCreator(fileRoot, root, this);
-        childNodeCreator.execute();
-    }
     
     @Override
     public void createTree(TreeWillExpandListener twel) {
