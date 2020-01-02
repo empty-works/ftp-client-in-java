@@ -92,7 +92,7 @@ public class LoginUi extends javax.swing.JPanel {
         LogCon5 = new javax.swing.JPanel();
         connectButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 204, 204));
+        setBackground(new java.awt.Color(255, 185, 150));
         setToolTipText(null);
         setLayout(new java.awt.GridLayout(1, 5));
 

@@ -101,6 +101,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     private void showChildren(final DefaultMutableTreeNode node) {
         tree.setEnabled(false);
 
+        /*
         SwingWorker<Void, File> worker = new SwingWorker<Void, File>() {
             @Override
             public Void doInBackground() {
@@ -131,6 +132,9 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
             }
         };
         worker.execute();
+*/
+        ChildNodeProcessor cnp = new ChildNodeProcessor(node, fileSystemView, tree);
+        cnp.execute();
     }
 
     private void createChildNodes() {
