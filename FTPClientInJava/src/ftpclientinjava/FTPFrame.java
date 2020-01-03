@@ -6,7 +6,7 @@ import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
-import ftpclientinjava.ui.uploader.UploaderUi;
+import ftpclientinjava.ui.uploader.TreeUi;
 
 /**
  *
@@ -41,7 +41,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addUploaderPanel() {
         
-        UploaderUi uu = new UploaderUi();
+        TreeUi uu = new TreeUi();
         UploadTopView.add(uu);
         uu.initAll();
     }

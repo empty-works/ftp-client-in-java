@@ -15,7 +15,7 @@ public class TreePathToStringConverter {
     public static String getStringFilePath(TreePath treePath) {
         
         StringBuilder sb = new StringBuilder();
-        sb.append(UploaderUi.systemPath);
+        sb.append(TreeUi.systemPath);
         Object[] nodes = treePath.getPath();
         System.out.println("Converting " + treePath.toString() + "to ...");
         

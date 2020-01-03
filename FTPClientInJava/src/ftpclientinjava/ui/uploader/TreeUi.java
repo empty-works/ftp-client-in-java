@@ -15,7 +15,7 @@ import javax.swing.tree.DefaultTreeModel;
  *
  * @author MP
  */
-public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeSelectionListener {
+public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelectionListener {
 
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
@@ -25,7 +25,7 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     public static DefaultMutableTreeNode currentNode = null;
     public static String systemPath = System.getProperty("user.home");
 
-    public UploaderUi() {
+    public TreeUi() {
         initComponents();
     }
     
