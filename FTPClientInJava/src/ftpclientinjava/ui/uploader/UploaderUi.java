@@ -2,21 +2,14 @@
  */
 package ftpclientinjava.ui.uploader;
 
-import java.awt.Component;
 import java.io.File;
-import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.SwingWorker;
-import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import javax.swing.event.TreeWillExpandListener;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeSelectionModel;
 
 /**
  *
@@ -27,8 +20,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     private DefaultMutableTreeNode root;
     private DefaultTreeModel treeModel;
     private JTree tree;
-    private File fileRoot;
-    private ChildNodeCreator childNodeCreator;
     private FileSystemView fileSystemView;
     private TreeSelectionListener treeSelectionListener;
     public static DefaultMutableTreeNode currentNode = null;
@@ -41,14 +32,10 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
     public void initAll() {
         
         initRoot(); 
-        //createChildNodes();
     }
     
     private void initRoot() {
         
-        //fileRoot = new File(systemPath);
-        //System.out.println("System path: " + fileRoot);
-        //root = new DefaultMutableTreeNode(new FileNode(fileRoot));
         root = new DefaultMutableTreeNode();
         treeModel = new DefaultTreeModel(root);
         fileSystemView = FileSystemView.getFileSystemView();
@@ -147,7 +134,6 @@ public class UploaderUi extends javax.swing.JPanel implements TreeHandler, TreeS
         gridBagConstraints.weighty = 0.1;
         add(TreeContainer, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TreeContainer;
