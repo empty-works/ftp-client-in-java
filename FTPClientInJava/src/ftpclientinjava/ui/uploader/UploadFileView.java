@@ -2,14 +2,32 @@
  */
 package ftpclientinjava.ui.uploader;
 
+import java.io.File;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author MP
  */
 public class UploadFileView extends javax.swing.JPanel {
 
-    public UploadFileView() {
+    private File file;
+    
+    public UploadFileView(File file) {
         initComponents();
+        
+        this.file = file;
+        listFiles();
+    }
+    
+    private void listFiles() {
+        
+        String[] fileNames = file.list();
+        JList<String> fileList = new JList<>(fileNames);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.add(fileList);
+        this.add(scrollPane);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,17 +35,8 @@ public class UploadFileView extends javax.swing.JPanel {
     private void initComponents() {
 
         setToolTipText(null);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
-        );
+        setOpaque(false);
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 
