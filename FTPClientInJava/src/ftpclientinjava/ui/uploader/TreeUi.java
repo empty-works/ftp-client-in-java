@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.ui.uploader;
 
+import ftpclientinjava.FTPFrame;
 import java.io.File;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -54,8 +55,7 @@ public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelec
                         (DefaultMutableTreeNode) tse.getPath().getLastPathComponent();
                 showChildren(node);
                 // Show subdirectories and files
-                UploadFileView ufv = new UploadFileView((File)node.getUserObject());
-                ufv.listFiles();
+                FTPFrame.ufv.listFiles((File)node.getUserObject());
             }
         };
     }

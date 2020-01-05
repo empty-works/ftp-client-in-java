@@ -21,6 +21,7 @@ public class FTPFrame extends javax.swing.JFrame {
 
     private UserLoginInput userLogin = new UserLoginInput();
     private StatusPanel statusPanel = new StatusPanel();
+    public static UploadFileView ufv;
     
     /**
      * 
@@ -71,8 +72,8 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addUploadFileViewPanel() {
         
-        UploadFileView ufp = new UploadFileView();
-        UploadBottomView.add(ufp);
+        ufv = new UploadFileView();
+        UploadBottomView.add(ufv);
     }
     
     private void addDownloaderPanel() {
