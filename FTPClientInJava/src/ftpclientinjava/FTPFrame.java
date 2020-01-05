@@ -7,6 +7,10 @@ import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
 import ftpclientinjava.ui.uploader.TreeUi;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -23,10 +27,27 @@ public class FTPFrame extends javax.swing.JFrame {
     public FTPFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setLookAndFeel();
         addStatusPanel();
         addLoginPanel();
         addUploaderPanel();
         addDownloaderPanel();
+    }
+    
+    private void setLookAndFeel() {
+        
+        try {
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void addStatusPanel() {
