@@ -81,6 +81,7 @@ public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelec
         tree.expandRow(0);
         tree.setCellRenderer(new TreeCellRenderer());
         JScrollPane treeScrollPane = new JScrollPane(tree);
+        treeScrollPane.setBorder(null);
         TreeContainer.add(treeScrollPane);
     }
         
@@ -119,8 +120,8 @@ public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelec
 
         TreeContainer = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText(null);
-        setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
 
         TreeContainer.setToolTipText(null);
@@ -132,6 +133,7 @@ public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelec
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
         add(TreeContainer, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
