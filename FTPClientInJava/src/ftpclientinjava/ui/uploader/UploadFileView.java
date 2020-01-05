@@ -18,10 +18,9 @@ public class UploadFileView extends javax.swing.JPanel {
         initComponents();
         
         this.file = file;
-        listFiles();
     }
     
-    private void listFiles() {
+    public void listFiles() {
         
         String[] fileNames = file.list();
         JList<String> fileList = new JList<>(fileNames);

@@ -53,6 +53,9 @@ public class TreeUi extends javax.swing.JPanel implements TreeHandler, TreeSelec
                 DefaultMutableTreeNode node = 
                         (DefaultMutableTreeNode) tse.getPath().getLastPathComponent();
                 showChildren(node);
+                // Show subdirectories and files
+                UploadFileView ufv = new UploadFileView((File)node.getUserObject());
+                ufv.listFiles();
             }
         };
     }
