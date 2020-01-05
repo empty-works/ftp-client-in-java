@@ -12,15 +12,11 @@ import javax.swing.JScrollPane;
  */
 public class UploadFileView extends javax.swing.JPanel {
 
-    private File file;
-    
-    public UploadFileView(File file) {
+    public UploadFileView() {
         initComponents();
-        
-        this.file = file;
     }
     
-    public void listFiles() {
+    public void listFiles(File file) {
         
         String[] fileNames = file.list();
         JList<String> fileList = new JList<>(fileNames);

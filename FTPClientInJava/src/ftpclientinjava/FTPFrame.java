@@ -7,6 +7,7 @@ import ftpclientinjava.ui.DownloaderUi;
 import ftpclientinjava.ui.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
 import ftpclientinjava.ui.uploader.TreeUi;
+import ftpclientinjava.ui.uploader.UploadFileView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -30,7 +31,8 @@ public class FTPFrame extends javax.swing.JFrame {
         setLookAndFeel();
         addStatusPanel();
         addLoginPanel();
-        addUploaderPanel();
+        addTreePanel();
+        addUploadFileViewPanel();
         addDownloaderPanel();
     }
     
@@ -60,11 +62,17 @@ public class FTPFrame extends javax.swing.JFrame {
         LoginContainer.add(new LoginUi(userLogin, statusPanel));
     }
     
-    private void addUploaderPanel() {
+    private void addTreePanel() {
         
         TreeUi uu = new TreeUi();
         UploadTopView.add(uu);
         uu.initAll();
+    }
+    
+    private void addUploadFileViewPanel() {
+        
+        UploadFileView ufp = new UploadFileView();
+        UploadBottomView.add(ufp);
     }
     
     private void addDownloaderPanel() {
