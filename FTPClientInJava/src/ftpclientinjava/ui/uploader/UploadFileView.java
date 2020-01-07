@@ -3,7 +3,6 @@
 package ftpclientinjava.ui.uploader;
 
 import java.io.File;
-import javax.swing.AbstractListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
@@ -14,6 +13,8 @@ import javax.swing.ListModel;
  */
 public class UploadFileView extends javax.swing.JPanel {
 
+    JList<String> fileList;
+    
     public UploadFileView() {
         initComponents();
     }
@@ -21,7 +22,7 @@ public class UploadFileView extends javax.swing.JPanel {
     public void listFiles(File file) {
         
         String[] fileNames = file.list();
-        JList<String> fileList = new JList<>(fileNames);
+        fileList = new JList<>(fileNames);
         showFileList(fileNames, fileList);
     }
     
@@ -46,12 +47,24 @@ public class UploadFileView extends javax.swing.JPanel {
         scrollPane.setViewportView(fileList);
         this.add(scrollPane);
         */
+        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.add(fileList);
+        scrollPane.setViewportView(fileList);
+        scrollPane.revalidate();
+        scrollPane.repaint();
+        this.add(scrollPane);
+        this.revalidate();
+        this.repaint();
+        
+        /*
         ListModel<String> model = fileList.getModel();
         for(int i = 0; i < model.getSize(); i++) {
             
-            System.out.println(model.getElementAt(i));
+            String temp = model.getElementAt(i);
+            System.out.println(temp);
         }
-        
+*/
     }
 
     @SuppressWarnings("unchecked")
