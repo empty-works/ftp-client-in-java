@@ -23,6 +23,7 @@ public class UploadFileView extends javax.swing.JPanel {
         
         String[] fileNames = file.list();
         fileList = new JList<>(fileNames);
+        fileList.setCellRenderer(new UploadFileViewCellRenderer());
         showFileList(fileNames, fileList);
     }
     
@@ -48,6 +49,7 @@ public class UploadFileView extends javax.swing.JPanel {
         this.add(scrollPane);
         */
         
+        this.removeAll();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(fileList);
         scrollPane.setViewportView(fileList);
