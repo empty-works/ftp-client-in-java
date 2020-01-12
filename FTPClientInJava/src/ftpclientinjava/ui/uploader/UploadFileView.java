@@ -49,15 +49,15 @@ public class UploadFileView extends javax.swing.JPanel {
         this.add(scrollPane);
         */
         
-        this.removeAll();
+        FileViewContainer.removeAll();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(fileList);
         scrollPane.setViewportView(fileList);
         scrollPane.revalidate();
         scrollPane.repaint();
-        this.add(scrollPane);
-        this.revalidate();
-        this.repaint();
+        FileViewContainer.add(scrollPane);
+        FileViewContainer.revalidate();
+        FileViewContainer.repaint();
         
         /*
         ListModel<String> model = fileList.getModel();
@@ -72,13 +72,41 @@ public class UploadFileView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        FileViewContainer = new javax.swing.JPanel();
+        UploadButton = new javax.swing.JLabel();
 
         setToolTipText(null);
         setOpaque(false);
-        setLayout(new java.awt.GridLayout(1, 0));
+        setLayout(new java.awt.GridBagLayout());
+
+        FileViewContainer.setToolTipText(null);
+        FileViewContainer.setLayout(new java.awt.GridLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        add(FileViewContainer, gridBagConstraints);
+
+        UploadButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UploadButton.setText("Upload");
+        UploadButton.setToolTipText(null);
+        UploadButton.setMinimumSize(new java.awt.Dimension(34, 45));
+        UploadButton.setPreferredSize(new java.awt.Dimension(34, 45));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        add(UploadButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FileViewContainer;
+    private javax.swing.JLabel UploadButton;
     // End of variables declaration//GEN-END:variables
 }
