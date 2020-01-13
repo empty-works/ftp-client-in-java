@@ -17,6 +17,7 @@ public class UploadFileView extends javax.swing.JPanel {
     private JList<String> fileList;
     private Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
     private Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+    private String[] fileNames;
     
     public UploadFileView() {
         initComponents();
@@ -24,7 +25,7 @@ public class UploadFileView extends javax.swing.JPanel {
     
     public void listFiles(File file) {
         
-        String[] fileNames = file.list();
+        fileNames = file.list();
         fileList = new JList<>(fileNames);
         fileList.setCellRenderer(new UploadFileViewCellRenderer());
         showFileList(fileNames, fileList);
@@ -104,7 +105,8 @@ public class UploadFileView extends javax.swing.JPanel {
 
     private void UploadButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadButtonMousePressed
         
-        String selectedFileName = fileList.getSelectedValue();
+        int selectedIndex = fileList.getSelectedIndex();
+        String selectedFileName = fileNames[selectedIndex];
         System.out.println("Selected upload file: " + selectedFileName);
     }//GEN-LAST:event_UploadButtonMousePressed
 
