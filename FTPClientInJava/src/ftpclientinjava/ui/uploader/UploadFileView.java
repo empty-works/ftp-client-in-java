@@ -134,7 +134,8 @@ public class UploadFileView extends javax.swing.JPanel {
 
     private void UploadButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadButtonMousePressed
         
-        
+        String selectedFileName = fileList.getSelectedValue();
+        System.out.println("Selected upload file: " + selectedFileName);
     }//GEN-LAST:event_UploadButtonMousePressed
 
 
