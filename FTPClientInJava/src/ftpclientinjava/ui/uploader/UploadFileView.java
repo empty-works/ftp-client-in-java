@@ -128,7 +128,8 @@ public class UploadFileView extends javax.swing.JPanel {
 
     private void UploadButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadButtonMouseExited
         
-        
+        UploadButton.setBackground(Color.white);
+        UploadButton.setCursor(defaultCursor);
     }//GEN-LAST:event_UploadButtonMouseExited
 
     private void UploadButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UploadButtonMousePressed
