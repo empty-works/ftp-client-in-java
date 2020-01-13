@@ -7,7 +7,6 @@ import java.awt.Cursor;
 import java.io.File;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.ListModel;
 
 /**
  *
@@ -33,26 +32,6 @@ public class UploadFileView extends javax.swing.JPanel {
     
     private void showFileList(String[] fileNames, JList<String> fileList) {
         
-        /*
-        fileList.setModel(new AbstractListModel<String>() {
-            @Override
-            public int getSize() {
-                return fileNames.length;
-            }
-
-            @Override
-            public String getElementAt(int index) {
-                
-                return fileNames[index];
-            }
-        });
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.add(fileList);
-        scrollPane.setViewportView(fileList);
-        this.add(scrollPane);
-        */
-        
         FileViewContainer.removeAll();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.add(fileList);
@@ -62,15 +41,6 @@ public class UploadFileView extends javax.swing.JPanel {
         FileViewContainer.add(scrollPane);
         FileViewContainer.revalidate();
         FileViewContainer.repaint();
-        
-        /*
-        ListModel<String> model = fileList.getModel();
-        for(int i = 0; i < model.getSize(); i++) {
-            
-            String temp = model.getElementAt(i);
-            System.out.println(temp);
-        }
-*/
     }
 
     @SuppressWarnings("unchecked")
