@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.ui.uploader;
 
+import ftpclientinjava.Uploader;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import org.apache.commons.net.ftp.FTPClient;
 
 /**
  *
@@ -118,8 +120,10 @@ public class UploadFileView extends javax.swing.JPanel {
         try {
             //File file = new File(getClass().getClassLoader().getResource(
             //        filePath + File.pathSeparator + selectedFileName).toURI());
-            File file = new File(filePath + File.separator + selectedFileName);
+            File file = new File(selectedFileName);
             System.out.println("New file: " + file);
+            // Upload file
+            String path = filePath + File.separator + selectedFileName;
             
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
@@ -127,6 +131,12 @@ public class UploadFileView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_UploadButtonMousePressed
 
+    private FTPClient getFtpClient() {
+        
+        FTPClient ftpclient = null;
+        
+        return ftpclient;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FileViewContainer;
