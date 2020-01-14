@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JList;
@@ -21,7 +22,7 @@ public class UploadFileView extends javax.swing.JPanel {
     private Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
     private Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
     private String[] fileNames;
-    
+    private String filePath;
     
     public UploadFileView() {
         initComponents();
@@ -29,6 +30,8 @@ public class UploadFileView extends javax.swing.JPanel {
     
     public void listFiles(File file) {
         
+        filePath = file.getAbsolutePath();
+        System.out.println("File path: " + filePath);
         fileNames = file.list();
         fileList = new JList<>(fileNames);
         fileList.setCellRenderer(new UploadFileViewCellRenderer());
@@ -111,11 +114,14 @@ public class UploadFileView extends javax.swing.JPanel {
         
         int selectedIndex = fileList.getSelectedIndex();
         String selectedFileName = fileNames[selectedIndex];
-        System.out.println("Selected upload file: " + selectedFileName);
+        System.out.println("Selected upload file: " + filePath + File.separator + selectedFileName);
         try {
-            File file = new File(getClass().getClassLoader().getResource(selectedFileName).toURI());
+            //File file = new File(getClass().getClassLoader().getResource(
+            //        filePath + File.pathSeparator + selectedFileName).toURI());
+            File file = new File(filePath + File.separator + selectedFileName);
+            System.out.println("New file: " + file);
             
-        } catch (URISyntaxException ex) {
+        } catch (Exception ex) {
             System.out.println("Exception: " + ex);
             Logger.getLogger(UploadFileView.class.getName()).log(Level.SEVERE, null, ex);
         }
