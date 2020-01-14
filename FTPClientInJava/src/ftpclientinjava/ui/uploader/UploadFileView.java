@@ -5,6 +5,9 @@ package ftpclientinjava.ui.uploader;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
@@ -18,6 +21,7 @@ public class UploadFileView extends javax.swing.JPanel {
     private Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
     private Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
     private String[] fileNames;
+    
     
     public UploadFileView() {
         initComponents();
@@ -108,6 +112,13 @@ public class UploadFileView extends javax.swing.JPanel {
         int selectedIndex = fileList.getSelectedIndex();
         String selectedFileName = fileNames[selectedIndex];
         System.out.println("Selected upload file: " + selectedFileName);
+        try {
+            File file = new File(getClass().getClassLoader().getResource(selectedFileName).toURI());
+            
+        } catch (URISyntaxException ex) {
+            System.out.println("Exception: " + ex);
+            Logger.getLogger(UploadFileView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_UploadButtonMousePressed
 
 
