@@ -45,7 +45,7 @@ public class LoginHandler {
     private void establishConnection() {
         
         connection = new Connection(username, password, server, port);
-        statusPanel.addText("Connection established!");
+        statusPanel.addText("Connecting...");
     }
     
     private void createFtpClient() throws IOException {

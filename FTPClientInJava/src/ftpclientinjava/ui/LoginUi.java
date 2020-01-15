@@ -19,7 +19,7 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    private UserLoginInput userLogin;
+    private UserLoginInput userLogin = new UserLoginInput();
     public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
@@ -45,13 +45,13 @@ public class LoginUi extends javax.swing.JPanel {
         
         try {
             
+            System.out.println("Server: " + server);
             userLogin.server = server;
         } catch(NullPointerException npe) {
             
             Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, npe);
-            statusPanel.addText("<html><font color=\"red\">Server not found!</font></html>");
-        }
-        
+            statusPanel.addText("Server not found!");
+        } 
     }
     
     private void setUsername(String username) {
