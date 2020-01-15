@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.ui;
 
+import ftpclientinjava.FTPFrame;
 import ftpclientinjava.ui.document_filters.PortIntFilter;
 import ftpclientinjava.LoginHandler;
 import ftpclientinjava.beans.UserLoginInput;
@@ -42,7 +43,15 @@ public class LoginUi extends javax.swing.JPanel {
     
     private void setServer(String server) {
         
-        userLogin.server = server;
+        try {
+            
+            userLogin.server = server;
+        } catch(NullPointerException npe) {
+            
+            Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, npe);
+            statusPanel.addText("<html><font color=\"red\">Server not found!</font></html>");
+        }
+        
     }
     
     private void setUsername(String username) {
