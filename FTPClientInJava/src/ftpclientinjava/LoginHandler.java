@@ -13,7 +13,7 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class LoginHandler {
     
-    private UserLoginInput userLogin = null; 
+    private UserLoginInput userLogin;
     private String server;
     private String username;
     private String password;
@@ -43,6 +43,7 @@ public class LoginHandler {
     private void establishConnection() {
         
         connection = new Connection(username, password, server, port);
+        
     }
     
     private void createFtpClient() throws IOException {

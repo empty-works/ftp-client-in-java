@@ -6,7 +6,6 @@ import ftpclientinjava.ui.document_filters.PortIntFilter;
 import ftpclientinjava.LoginHandler;
 import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.document_filters.CompositeFiltersFilter;
-import ftpclientinjava.ui.document_filters.NumLimitFilter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +18,8 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    public static UserLoginInput userLogin = new UserLoginInput();
-    private LoginHandler loginHandler;
+    private UserLoginInput userLogin;
+    public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
     /**
