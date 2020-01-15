@@ -36,6 +36,8 @@ public class LoginHandler {
         this.password = userLogin.password;
         this.port = userLogin.port;
         
+        statusPanel.addText("Logging in...");
+        
         establishConnection();
         createFtpClient();
     }
@@ -43,7 +45,7 @@ public class LoginHandler {
     private void establishConnection() {
         
         connection = new Connection(username, password, server, port);
-        
+        statusPanel.addText("Connection established!");
     }
     
     private void createFtpClient() throws IOException {
