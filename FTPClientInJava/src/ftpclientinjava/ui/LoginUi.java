@@ -19,14 +19,14 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    private UserLoginInput userLogin;
+    public static UserLoginInput userLogin = new UserLoginInput();
     private LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
     /**
      * 
      */
-    public LoginUi(UserLoginInput userLogin, StatusPanel statusPanel) {
+    public LoginUi(StatusPanel statusPanel) {
         initComponents();
         
         this.userLogin = userLogin;

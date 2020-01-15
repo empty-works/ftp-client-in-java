@@ -19,7 +19,6 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class FTPFrame extends javax.swing.JFrame {
 
-    private UserLoginInput userLogin = new UserLoginInput();
     private StatusPanel statusPanel = new StatusPanel();
     public static UploadFileView ufv;
     
@@ -60,7 +59,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addLoginPanel() {
         
-        LoginContainer.add(new LoginUi(userLogin, statusPanel));
+        LoginContainer.add(new LoginUi(statusPanel));
     }
     
     private void addTreePanel() {
