@@ -23,6 +23,7 @@ public class LoginUi extends javax.swing.JPanel {
     public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
+    
     /**
      * 
      */
@@ -99,6 +100,7 @@ public class LoginUi extends javax.swing.JPanel {
         PortTextField = new javax.swing.JTextField();
         LogCon5 = new javax.swing.JPanel();
         connectButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 185, 150));
         setToolTipText(null);
@@ -213,6 +215,7 @@ public class LoginUi extends javax.swing.JPanel {
         LogCon4.add(PortLabel, gridBagConstraints);
 
         PortTextField.setColumns(4);
+        PortTextField.setText("21");
         PortTextField.setToolTipText(null);
         PortTextField.setMinimumSize(new java.awt.Dimension(250, 19));
         PortTextField.setPreferredSize(new java.awt.Dimension(250, 19));
@@ -246,6 +249,18 @@ public class LoginUi extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
         LogCon5.add(connectButton, gridBagConstraints);
 
+        jButton1.setText("Reset");
+        jButton1.setToolTipText(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 5);
+        LogCon5.add(jButton1, gridBagConstraints);
+
         add(LogCon5);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,6 +279,11 @@ public class LoginUi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_connectButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LogCon1;
@@ -280,5 +300,6 @@ public class LoginUi extends javax.swing.JPanel {
     private javax.swing.JLabel UsernameLabel;
     private javax.swing.JTextField UsernameTextField;
     private javax.swing.JButton connectButton;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
