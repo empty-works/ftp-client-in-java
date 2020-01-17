@@ -47,7 +47,7 @@ public class LoginUi extends javax.swing.JPanel {
         try {
             
             System.out.println("Server: " + server);
-            userLogin.server = server;
+            userLogin.setServer(server);
         } catch(NullPointerException npe) {
             
             Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, npe);
@@ -57,19 +57,19 @@ public class LoginUi extends javax.swing.JPanel {
     
     private void setUsername(String username) {
         
-        userLogin.username = username;
+        userLogin.setUsername(username);
     }
     
     private void setPassword(String password) {
         
-        userLogin.password = password;
+        userLogin.setPassword(password);
     }
     
     private void setPort(String port) {
         
         if(!port.equals("")) {
             
-            userLogin.port = Integer.parseInt(port);
+            userLogin.setPort(Integer.parseInt(port));
         }        
     }
     
