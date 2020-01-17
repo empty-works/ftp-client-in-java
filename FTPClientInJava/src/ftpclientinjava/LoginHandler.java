@@ -31,10 +31,10 @@ public class LoginHandler {
     public void login(StatusPanel statusPanel) throws IOException {
         
         this.statusPanel = statusPanel;
-        this.server = userLogin.server;
-        this.username = userLogin.username;
-        this.password = userLogin.password;
-        this.port = userLogin.port;
+        this.server = userLogin.getServer();
+        this.username = userLogin.getUsername();
+        this.password = userLogin.getPassword();
+        this.port = userLogin.getPort();
         
         statusPanel.addText("Logging in...");
         

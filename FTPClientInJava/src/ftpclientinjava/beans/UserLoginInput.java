@@ -8,10 +8,10 @@ package ftpclientinjava.beans;
  */
 public class UserLoginInput {
     
-    public String server;
-    public String username;
-    public String password;
-    public int port;
+    private String server;
+    private String username;
+    private String password;
+    private int port;
     
     public void setServer(String server) {
         this.server = server;
