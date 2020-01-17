@@ -128,6 +128,9 @@ public class UploadFileView extends javax.swing.JPanel {
             // Upload file
             String path = filePath + File.separator + selectedFileName;
             FTPClient ftpclient = getFtpClient();
+            Uploader instance = new Uploader(ftpclient);
+            instance.upload(file, path);
+            ftpclient.disconnect();
             
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
