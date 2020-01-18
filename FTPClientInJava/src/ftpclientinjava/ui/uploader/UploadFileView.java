@@ -5,6 +5,7 @@ package ftpclientinjava.ui.uploader;
 import ftpclientinjava.Connection;
 import ftpclientinjava.Uploader;
 import ftpclientinjava.beans.TestFtpServerLogin;
+import ftpclientinjava.ui.StatusPanel;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
@@ -28,9 +29,11 @@ public class UploadFileView extends javax.swing.JPanel {
     private Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
     private String[] fileNames;
     private String filePath;
+    private StatusPanel statusPanel;
     
-    public UploadFileView() {
+    public UploadFileView(StatusPanel statusPanel) {
         initComponents();
+        this.statusPanel = statusPanel;
     }
     
     public void listFiles(File file) {
@@ -120,6 +123,7 @@ public class UploadFileView extends javax.swing.JPanel {
         int selectedIndex = fileList.getSelectedIndex();
         String selectedFileName = fileNames[selectedIndex];
         System.out.println("Selected upload file: " + filePath + File.separator + selectedFileName);
+        statusPanel.addText("Uploading file: " + selectedFileName);
         try {
             //File file = new File(getClass().getClassLoader().getResource(
             //        filePath + File.pathSeparator + selectedFileName).toURI());
@@ -133,6 +137,7 @@ public class UploadFileView extends javax.swing.JPanel {
             ftpclient.disconnect();
             
         } catch (Exception ex) {
+            statusPanel.addText("Error: " + ex);
             System.out.println("Exception: " + ex);
             Logger.getLogger(UploadFileView.class.getName()).log(Level.SEVERE, null, ex);
         }

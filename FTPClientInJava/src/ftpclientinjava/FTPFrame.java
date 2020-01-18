@@ -71,7 +71,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addUploadFileViewPanel() {
         
-        ufv = new UploadFileView();
+        ufv = new UploadFileView(statusPanel);
         UploadBottomView.add(ufv);
     }
     
