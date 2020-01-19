@@ -66,12 +66,35 @@ public class DownloaderUi extends javax.swing.JPanel {
         DownloadButton.setMaximumSize(new java.awt.Dimension(34, 50));
         DownloadButton.setMinimumSize(new java.awt.Dimension(34, 50));
         DownloadButton.setPreferredSize(new java.awt.Dimension(34, 50));
+        DownloadButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DownloadButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                DownloadButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                DownloadButtonMousePressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(DownloadButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DownloadButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownloadButtonMouseEntered
+        
+    }//GEN-LAST:event_DownloadButtonMouseEntered
+
+    private void DownloadButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownloadButtonMouseExited
+        
+    }//GEN-LAST:event_DownloadButtonMouseExited
+
+    private void DownloadButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownloadButtonMousePressed
+        
+    }//GEN-LAST:event_DownloadButtonMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
