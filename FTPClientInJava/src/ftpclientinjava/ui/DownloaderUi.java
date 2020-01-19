@@ -2,6 +2,10 @@
  */
 package ftpclientinjava.ui;
 
+import ftpclientinjava.Downloader;
+import ftpclientinjava.Uploader;
+import org.apache.commons.net.ftp.FTPClient;
+
 /**
  *
  * @author MP
@@ -20,6 +24,14 @@ public class DownloaderUi extends javax.swing.JPanel {
     private void displayFiles() {
         
          
+    }
+    
+    private void downloadFile() {
+        
+        FTPClient ftpclient = getFtpClient();
+        Downloader instance = new Downloader(ftpclient);
+        instance.downloadFile(file, path);
+        ftpclient.disconnect();
     }
 
     @SuppressWarnings("unchecked")
