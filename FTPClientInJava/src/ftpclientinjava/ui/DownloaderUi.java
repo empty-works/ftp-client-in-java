@@ -41,7 +41,7 @@ public class DownloaderUi extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        DownloadButton = new javax.swing.JLabel();
 
         setToolTipText(null);
         setLayout(new java.awt.GridBagLayout());
@@ -60,22 +60,23 @@ public class DownloaderUi extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.1;
         add(jScrollPane1, gridBagConstraints);
 
-        jTextField1.setText("Type file to download...");
-        jTextField1.setToolTipText(null);
-        jTextField1.setMinimumSize(new java.awt.Dimension(4, 40));
-        jTextField1.setPreferredSize(new java.awt.Dimension(55, 40));
+        DownloadButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DownloadButton.setText("Download File");
+        DownloadButton.setToolTipText(null);
+        DownloadButton.setMaximumSize(new java.awt.Dimension(34, 50));
+        DownloadButton.setMinimumSize(new java.awt.Dimension(34, 50));
+        DownloadButton.setPreferredSize(new java.awt.Dimension(34, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        add(jTextField1, gridBagConstraints);
+        add(DownloadButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DownloadButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
