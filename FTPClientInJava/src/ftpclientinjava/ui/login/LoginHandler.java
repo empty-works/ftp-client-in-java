@@ -1,7 +1,8 @@
 /*
  */
-package ftpclientinjava;
+package ftpclientinjava.ui.login;
 
+import ftpclientinjava.Connection;
 import ftpclientinjava.beans.UserLoginInput;
 import ftpclientinjava.ui.StatusPanel;
 import java.io.IOException;

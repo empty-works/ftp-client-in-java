@@ -2,6 +2,7 @@
  */
 package ftpclientinjava;
 
+import ftpclientinjava.ui.downloader.Downloader;
 import ftpclientinjava.beans.TestFtpServerLogin;
 import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import java.io.File;

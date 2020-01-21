@@ -1,11 +1,11 @@
 /*
  */
-package ftpclientinjava.ui;
+package ftpclientinjava.ui.login;
 
 import ftpclientinjava.FTPFrame;
 import ftpclientinjava.ui.document_filters.PortIntFilter;
-import ftpclientinjava.LoginHandler;
 import ftpclientinjava.beans.UserLoginInput;
+import ftpclientinjava.ui.StatusPanel;
 import ftpclientinjava.ui.document_filters.CompositeFiltersFilter;
 import java.io.IOException;
 import java.util.logging.Level;

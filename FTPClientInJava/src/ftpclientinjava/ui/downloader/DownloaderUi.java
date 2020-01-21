@@ -2,7 +2,6 @@
  */
 package ftpclientinjava.ui.downloader;
 
-import ftpclientinjava.Downloader;
 import ftpclientinjava.Uploader;
 import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
