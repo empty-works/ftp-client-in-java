@@ -1,17 +1,34 @@
 /*
  */
-package ftpclientinjava.beans;
+package ftpclientinjava.ui.login;
 
 /**
  *
  * @author MP
  */
-public class UserLoginInput {
+public class UserLoginInputSingleton {
     
     private String server;
     private String username;
     private String password;
     private int port;
+    
+    private static UserLoginInputSingleton login_instance = null;
+    
+    private UserLoginInputSingleton() {
+        
+        
+    }
+    
+    public static UserLoginInputSingleton getInstance() {
+        
+        if(login_instance == null) {
+            
+            login_instance = new UserLoginInputSingleton();
+        }
+        
+        return login_instance;
+    }
     
     public void setServer(String server) {
         this.server = server;

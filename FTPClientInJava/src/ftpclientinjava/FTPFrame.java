@@ -2,7 +2,7 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.beans.UserLoginInput;
+import ftpclientinjava.ui.login.UserLoginInputSingleton;
 import ftpclientinjava.ui.downloader.DownloaderUi;
 import ftpclientinjava.ui.login.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
