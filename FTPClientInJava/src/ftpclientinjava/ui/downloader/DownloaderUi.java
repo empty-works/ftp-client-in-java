@@ -1,9 +1,10 @@
 /*
  */
-package ftpclientinjava.ui;
+package ftpclientinjava.ui.downloader;
 
 import ftpclientinjava.Downloader;
 import ftpclientinjava.Uploader;
+import java.io.IOException;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
@@ -26,7 +27,7 @@ public class DownloaderUi extends javax.swing.JPanel {
          
     }
     
-    private void downloadFile() {
+    private void downloadFile() throws IOException {
         
         FTPClient ftpclient = getFtpClient();
         Downloader instance = new Downloader(ftpclient);
