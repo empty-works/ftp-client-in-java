@@ -3,7 +3,11 @@
 package ftpclientinjava.utilities;
 
 import ftpclientinjava.ui.StatusPanel;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
 
 /**
  *
@@ -58,11 +62,30 @@ public class FtpClientHandler {
     
     public void loginToServer() {
         
-        
+        connectToServer();
+        try {
+            
+            ftpClient.login(username, password);
+            statusPanel.addText("Waiting for welcome string...");
+            statusPanel.addText("From server: " + ftpClient.getReplyString());
+            statusPanel.addText("Successfully connected to server...");
+        } catch (IOException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void connectToServer() {
         
-        
+        try {
+            ftpClient.connect(server, port);
+            int reply = ftpClient.getReplyCode();
+            if(!FTPReply.isPositiveCompletion(reply)) {
+                ftpClient.disconnect();
+                statusPanel.addText("Cannot connect to server...");
+                throw new IOException("Exception in connecting to FTP server");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
