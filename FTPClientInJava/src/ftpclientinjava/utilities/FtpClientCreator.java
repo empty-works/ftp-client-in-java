@@ -4,6 +4,7 @@ package ftpclientinjava.utilities;
 
 import ftpclientinjava.Connection;
 import ftpclientinjava.ui.StatusPanel;
+import ftpclientinjava.ui.login.UserLoginInputSingleton;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
@@ -15,8 +16,16 @@ public class FtpClientCreator {
    public final static FTPClient get(StatusPanel statusPanel) {
        
        FTPClient ftpClient = null;
+       UserLoginInputSingleton login = UserLoginInputSingleton.getInstance();
        
-       Connection connection = new Connection(username, password, server, port);
+       Connection connection = new 
+        Connection(
+                login.getUsername(), 
+                login.getPassword(), 
+                login.getPassword(), 
+                login.getPort());
+       
+       
        
        return ftpClient;
    }
