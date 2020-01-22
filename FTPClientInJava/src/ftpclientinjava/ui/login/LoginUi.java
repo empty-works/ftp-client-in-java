@@ -77,12 +77,13 @@ public class LoginUi extends javax.swing.JPanel {
         }        
     }
     
+    /*
     private void sendToLoginHandler() throws IOException {
         
         loginHandler = new LoginHandler(ftpHandler);
         loginHandler.login(statusPanel);
     }
-    
+    */
     
 
     @SuppressWarnings("unchecked")
@@ -275,6 +276,8 @@ public class LoginUi extends javax.swing.JPanel {
         setUsername(UsernameTextField.getText());
         setPassword(PasswordField.getPassword().toString());
         setPort(PortTextField.getText());
+        
+        /*
         try {
             sendToLoginHandler();
         } catch (IOException ex) {
@@ -282,6 +285,7 @@ public class LoginUi extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(
                     LoginUi.this, ex, "Error", JOptionPane.WARNING_MESSAGE);
         }
+*/
     }//GEN-LAST:event_connectButtonActionPerformed
 
     private void ResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetButtonActionPerformed
