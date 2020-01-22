@@ -3,6 +3,9 @@
 package ftpclientinjava.utilities;
 
 import ftpclientinjava.ui.StatusPanel;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,6 +87,26 @@ public class FtpClientHandler {
                 statusPanel.addText("Cannot connect to server...");
                 throw new IOException("Exception in connecting to FTP server");
             }
+        } catch (IOException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void disconnect() {
+        
+        try {
+            ftpClient.disconnect();
+        } catch (IOException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void uploadFile(String path, File file) {
+        
+        try {
+            ftpClient.storeFile(path, new FileInputStream(file));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
