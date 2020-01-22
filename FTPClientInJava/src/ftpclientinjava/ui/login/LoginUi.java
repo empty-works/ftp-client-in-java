@@ -19,7 +19,7 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    private FtpClientHandler userLogin = FtpClientHandler.getInstance();
+    private FtpClientHandler ftpHandler = FtpClientHandler.getInstance();
     public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
@@ -41,12 +41,17 @@ public class LoginUi extends javax.swing.JPanel {
                 new PortIntFilter()/*, new NumLimitFilter()*/));
     }
     
+    private void setStatusPanel() {
+        
+        ftpHandler.setStatusPanel(statusPanel);
+    }
+    
     private void setServer(String server) {
         
         try {
             
             System.out.println("Server: " + server);
-            userLogin.setServer(server);
+            ftpHandler.setServer(server);
         } catch(NullPointerException npe) {
             
             Logger.getLogger(FTPFrame.class.getName()).log(Level.SEVERE, null, npe);
@@ -56,25 +61,25 @@ public class LoginUi extends javax.swing.JPanel {
     
     private void setUsername(String username) {
         
-        userLogin.setUsername(username);
+        ftpHandler.setUsername(username);
     }
     
     private void setPassword(String password) {
         
-        userLogin.setPassword(password);
+        ftpHandler.setPassword(password);
     }
     
     private void setPort(String port) {
         
         if(!port.equals("")) {
             
-            userLogin.setPort(Integer.parseInt(port));
+            ftpHandler.setPort(Integer.parseInt(port));
         }        
     }
     
     private void sendToLoginHandler() throws IOException {
         
-        loginHandler = new LoginHandler(userLogin);
+        loginHandler = new LoginHandler(ftpHandler);
         loginHandler.login(statusPanel);
     }
     
@@ -265,6 +270,7 @@ public class LoginUi extends javax.swing.JPanel {
 
     private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
         
+        setStatusPanel();
         setServer(ServerTextField.getText());
         setUsername(UsernameTextField.getText());
         setPassword(PasswordField.getPassword().toString());

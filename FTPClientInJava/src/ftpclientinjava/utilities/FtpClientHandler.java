@@ -2,6 +2,9 @@
  */
 package ftpclientinjava.utilities;
 
+import ftpclientinjava.ui.StatusPanel;
+import org.apache.commons.net.ftp.FTPClient;
+
 /**
  *
  * @author MP
@@ -12,7 +15,8 @@ public class FtpClientHandler {
     private String username;
     private String password;
     private int port;
-    private 
+    private StatusPanel statusPanel;
+    private FTPClient ftpClient = new FTPClient();
     
     private static FtpClientHandler login_instance = null;
     
@@ -47,10 +51,18 @@ public class FtpClientHandler {
         this.port = port;
     }
     
-    public void login() {
+    public void setStatusPanel(StatusPanel statusPanel) {
+        
+        this.statusPanel = statusPanel;
+    }
+    
+    public void loginToServer() {
         
         
     }
     
-    private void 
+    private void connectToServer() {
+        
+        
+    }
 }
