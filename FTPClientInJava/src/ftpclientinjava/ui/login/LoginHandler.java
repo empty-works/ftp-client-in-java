@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.ui.login;
 
+import ftpclientinjava.utilities.UserLoginInputSingleton;
 import ftpclientinjava.Connection;
 import ftpclientinjava.ui.StatusPanel;
 import java.io.IOException;

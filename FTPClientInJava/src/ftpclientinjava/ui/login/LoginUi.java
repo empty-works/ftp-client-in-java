@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.ui.login;
 
+import ftpclientinjava.utilities.UserLoginInputSingleton;
 import ftpclientinjava.FTPFrame;
 import ftpclientinjava.ui.document_filters.PortIntFilter;
 import ftpclientinjava.ui.StatusPanel;

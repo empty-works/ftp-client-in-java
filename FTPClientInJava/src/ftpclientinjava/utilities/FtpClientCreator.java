@@ -4,7 +4,6 @@ package ftpclientinjava.utilities;
 
 import ftpclientinjava.Connection;
 import ftpclientinjava.ui.StatusPanel;
-import ftpclientinjava.ui.login.UserLoginInputSingleton;
 import org.apache.commons.net.ftp.FTPClient;
 
 /**

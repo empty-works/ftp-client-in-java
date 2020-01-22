@@ -1,6 +1,6 @@
 /*
  */
-package ftpclientinjava.ui.login;
+package ftpclientinjava.utilities;
 
 /**
  *
