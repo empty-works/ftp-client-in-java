@@ -18,7 +18,7 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    private UserLoginInputSingleton userLogin = new UserLoginInputSingleton();
+    private UserLoginInputSingleton userLogin = UserLoginInputSingleton.getInstance();
     public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     
@@ -29,7 +29,6 @@ public class LoginUi extends javax.swing.JPanel {
     public LoginUi(StatusPanel statusPanel) {
         initComponents();
         
-        this.userLogin = userLogin;
         this.statusPanel = statusPanel;
         setPortFilters();
     }
