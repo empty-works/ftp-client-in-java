@@ -2,12 +2,12 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.utilities.UserLoginInputSingleton;
+import ftpclientinjava.utilities.FtpClientHandler;
 import ftpclientinjava.ui.downloader.DownloaderUi;
 import ftpclientinjava.ui.login.LoginUi;
 import ftpclientinjava.ui.StatusPanel;
 import ftpclientinjava.ui.uploader.TreeUi;
-import ftpclientinjava.ui.uploader.UploadFileView;
+import ftpclientinjava.ui.uploader.UploadFileViewUi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -20,7 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class FTPFrame extends javax.swing.JFrame {
 
     private StatusPanel statusPanel = new StatusPanel();
-    public static UploadFileView ufv;
+    public static UploadFileViewUi ufv;
     
     /**
      * 
@@ -71,7 +71,7 @@ public class FTPFrame extends javax.swing.JFrame {
     
     private void addUploadFileViewPanel() {
         
-        ufv = new UploadFileView(statusPanel);
+        ufv = new UploadFileViewUi(statusPanel);
         UploadBottomView.add(ufv);
     }
     

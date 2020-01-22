@@ -15,7 +15,7 @@ public class FtpClientCreator {
    public final static FTPClient get(StatusPanel statusPanel) {
        
        FTPClient ftpClient = null;
-       UserLoginInputSingleton login = UserLoginInputSingleton.getInstance();
+       FtpClientHandler login = FtpClientHandler.getInstance();
        
        Connection connection = new 
         Connection(

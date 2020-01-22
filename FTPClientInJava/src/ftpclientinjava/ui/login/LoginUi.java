@@ -2,7 +2,7 @@
  */
 package ftpclientinjava.ui.login;
 
-import ftpclientinjava.utilities.UserLoginInputSingleton;
+import ftpclientinjava.utilities.FtpClientHandler;
 import ftpclientinjava.FTPFrame;
 import ftpclientinjava.ui.document_filters.PortIntFilter;
 import ftpclientinjava.ui.StatusPanel;
@@ -19,7 +19,7 @@ import javax.swing.text.PlainDocument;
  */
 public class LoginUi extends javax.swing.JPanel {
 
-    private UserLoginInputSingleton userLogin = UserLoginInputSingleton.getInstance();
+    private FtpClientHandler userLogin = FtpClientHandler.getInstance();
     public static LoginHandler loginHandler;
     private StatusPanel statusPanel;
     

@@ -6,25 +6,25 @@ package ftpclientinjava.utilities;
  *
  * @author MP
  */
-public class UserLoginInputSingleton {
+public class FtpClientHandler {
     
     private String server;
     private String username;
     private String password;
     private int port;
     
-    private static UserLoginInputSingleton login_instance = null;
+    private static FtpClientHandler login_instance = null;
     
-    private UserLoginInputSingleton() {
+    private FtpClientHandler() {
         
         
     }
     
-    public static UserLoginInputSingleton getInstance() {
+    public static FtpClientHandler getInstance() {
         
         if(login_instance == null) {
             
-            login_instance = new UserLoginInputSingleton();
+            login_instance = new FtpClientHandler();
         }
         
         return login_instance;
@@ -60,5 +60,10 @@ public class UserLoginInputSingleton {
     
     public int getPort() {
         return port;
+    }
+    
+    public void login() {
+        
+        
     }
 }

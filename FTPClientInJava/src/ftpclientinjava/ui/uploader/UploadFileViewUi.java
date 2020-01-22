@@ -22,7 +22,7 @@ import org.apache.commons.net.ftp.FTPClient;
  *
  * @author MP
  */
-public class UploadFileView extends javax.swing.JPanel {
+public class UploadFileViewUi extends javax.swing.JPanel {
 
     private JList<String> fileList;
     private Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
@@ -31,7 +31,7 @@ public class UploadFileView extends javax.swing.JPanel {
     private String filePath;
     private StatusPanel statusPanel;
     
-    public UploadFileView(StatusPanel statusPanel) {
+    public UploadFileViewUi(StatusPanel statusPanel) {
         initComponents();
         this.statusPanel = statusPanel;
     }
@@ -139,7 +139,7 @@ public class UploadFileView extends javax.swing.JPanel {
         } catch (Exception ex) {
             statusPanel.addText("Error: " + ex);
             System.out.println("Exception: " + ex);
-            Logger.getLogger(UploadFileView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UploadFileViewUi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_UploadButtonMousePressed
 

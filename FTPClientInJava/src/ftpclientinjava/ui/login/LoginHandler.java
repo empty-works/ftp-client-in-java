@@ -2,7 +2,7 @@
  */
 package ftpclientinjava.ui.login;
 
-import ftpclientinjava.utilities.UserLoginInputSingleton;
+import ftpclientinjava.utilities.FtpClientHandler;
 import ftpclientinjava.Connection;
 import ftpclientinjava.ui.StatusPanel;
 import java.io.IOException;
@@ -14,17 +14,17 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class LoginHandler {
     
-    private UserLoginInputSingleton userLogin;
+    private FtpClientHandler userLogin;
     private String server;
     private String username;
     private String password;
     private int port;
     private Connection connection;
     private StatusPanel statusPanel;
-    private static FTPClient ftpClient;
+    private FTPClient ftpClient;
     private static boolean isConnected = false;
     
-    public LoginHandler(UserLoginInputSingleton userLogin) {
+    public LoginHandler(FtpClientHandler userLogin) {
         
         this.userLogin = userLogin;
     }
