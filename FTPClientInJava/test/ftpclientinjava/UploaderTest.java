@@ -48,6 +48,7 @@ public class UploaderTest {
         ftpClient.setPassword(TestFtpServerLogin.PASSWORD);
         ftpClient.setServer("localhost");
         ftpClient.setPort(fakeFtpServer.getServerControlPort());
+        
         /*
         Connection con = new Connection(
                 TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, "localhost", port);

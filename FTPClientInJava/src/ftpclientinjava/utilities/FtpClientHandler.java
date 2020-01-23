@@ -4,7 +4,10 @@ package ftpclientinjava.utilities;
 
 import ftpclientinjava.Uploader;
 import ftpclientinjava.ui.StatusPanel;
+import ftpclientinjava.ui.downloader.Downloader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,9 +109,22 @@ public class FtpClientHandler {
                 
         try {
             
-            System.out.println("Uploader instance created...");
             Uploader instance = new Uploader(ftpClient);
+            System.out.println("Uploader instance created...");
             instance.upload(file, path);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void downloadFile(String source, String destination) {
+        
+        try {
+            
+            Downloader instance = new Downloader(ftpClient);
+            System.out.println("Downloader instance created...");
+            instance.downloadFile(source, destination);
             
         } catch (IOException ex) {
             Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
