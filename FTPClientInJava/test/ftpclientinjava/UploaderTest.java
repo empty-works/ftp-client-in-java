@@ -7,7 +7,6 @@ import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import ftpclientinjava.utilities.FtpClientHandler;
 import java.io.File;
 import java.io.IOException;
-import org.apache.commons.net.ftp.FTPClient;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -23,7 +22,6 @@ import org.mockftpserver.fake.FakeFtpServer;
  */
 public class UploaderTest {
     
-    private FTPClient ftpclient;
     private FakeFtpServer fakeFtpServer;
     private FtpClientHandler ftpClient = FtpClientHandler.getInstance();
     
@@ -48,12 +46,6 @@ public class UploaderTest {
         ftpClient.setPassword(TestFtpServerLogin.PASSWORD);
         ftpClient.setServer("localhost");
         ftpClient.setPort(fakeFtpServer.getServerControlPort());
-        
-        /*
-        Connection con = new Connection(
-                TestFtpServerLogin.USER, TestFtpServerLogin.PASSWORD, "localhost", port);
-        ftpclient = con.getFTPClient();
-        */
     }
     
     @After
@@ -71,11 +63,7 @@ public class UploaderTest {
         
         ftpClient.uploadFile(path, file);
         
-        /*
-        Uploader instance = new Uploader(ftpclient);
-        instance.upload(file, path);
-*/
-        ftpclient.disconnect();
+        ftpClient.disconnect();
         fakeFtpServer.stop();
         assertThat(fakeFtpServer.getFileSystem().exists(path), is(true));
     }
