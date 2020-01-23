@@ -2,7 +2,6 @@
  */
 package ftpclientinjava;
 
-import ftpclientinjava.ui.downloader.Downloader;
 import ftpclientinjava.beans.TestFtpServerLogin;
 import ftpclientinjava.unit_test.FakeFtpServerCreator;
 import ftpclientinjava.utilities.FtpClientHandler;
@@ -44,9 +43,11 @@ public class DownloaderTest {
         
         fakeFtpServer = FakeFtpServerCreator.getFakeFtpServer();
         fakeFtpServer.start();
-        int port = fakeFtpServer.getServerControlPort();
         
-        
+        ftpClient.setUsername(TestFtpServerLogin.USER);
+        ftpClient.setPassword(TestFtpServerLogin.PASSWORD);
+        ftpClient.setServer("localhost");
+        ftpClient.setPort(fakeFtpServer.getServerControlPort());
         
         /*
         Connection con = new Connection(
@@ -67,8 +68,10 @@ public class DownloaderTest {
         System.out.println("downloadFile");
         String source = TestFtpServerLogin.FILE1;
         String destination = "downloaded_test001.txt";
-        Downloader instance = new Downloader(ftpclient);
-        instance.downloadFile(source, destination);
+        ftpClient.downloadFile(source, destination);
+        ftpClient.disconnect();
+        //Downloader instance = new Downloader(ftpclient);
+        //instance.downloadFile(source, destination);
         ftpclient.disconnect();
         fakeFtpServer.stop();
         assertThat(new File(destination), anExistingFile());
