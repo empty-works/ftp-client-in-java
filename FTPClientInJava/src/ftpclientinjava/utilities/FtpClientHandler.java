@@ -5,8 +5,6 @@ package ftpclientinjava.utilities;
 import ftpclientinjava.Uploader;
 import ftpclientinjava.ui.StatusPanel;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,6 +106,7 @@ public class FtpClientHandler {
                 
         try {
             
+            System.out.println("Uploader instance created...");
             Uploader instance = new Uploader(ftpClient);
             instance.upload(file, path);
             

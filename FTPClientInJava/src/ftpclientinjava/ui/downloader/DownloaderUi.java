@@ -28,10 +28,12 @@ public class DownloaderUi extends javax.swing.JPanel {
     
     private void downloadFile() throws IOException {
         
+        /*
         FTPClient ftpclient = getFtpClient();
         Downloader instance = new Downloader(ftpclient);
         instance.downloadFile(file, path);
         ftpclient.disconnect();
+*/
     }
 
     @SuppressWarnings("unchecked")
