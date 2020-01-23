@@ -2,6 +2,7 @@
  */
 package ftpclientinjava.utilities;
 
+import ftpclientinjava.Uploader;
 import ftpclientinjava.ui.StatusPanel;
 import java.io.File;
 import java.io.FileInputStream;
@@ -65,6 +66,8 @@ public class FtpClientHandler {
     
     public void loginToServer() {
         
+        // DELETE LOGINHANDLER CLASS
+        
         connectToServer();
         try {
             
@@ -102,11 +105,12 @@ public class FtpClientHandler {
     }
     
     public void uploadFile(String path, File file) {
-        
+                
         try {
-            ftpClient.storeFile(path, new FileInputStream(file));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+            
+            Uploader instance = new Uploader(ftpClient);
+            instance.upload(file, path);
+            
         } catch (IOException ex) {
             Logger.getLogger(FtpClientHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
